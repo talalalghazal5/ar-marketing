@@ -2,23 +2,45 @@
 
 import { PortfolioItem } from "@/data/types"
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL
+const baseUrl = process.env.LARAVEL_BASE_URL
 
 const normalizeItem = (item: any): PortfolioItem => {
+  // Mapping from Arabic database category to English Next.js Category
   const categoryMap: Record<string, string> = {
-    development: "Development",
-    photography: "Photography",
-    vfx: "Vfx",
-    marketing: "Marketing",
-    design: "Design",
+    "برمجة وتطوير": "Development",
+    "تصميم": "Design",
+    "تسويق": "Marketing",
+    "تصوير": "Photography",
+    "مؤثرات بصرية": "Vfx"
   }
 
-  // Extract specific fields based on the item type relationship
-  const typeRel = item[item.type] || {}
+  // Mapping from Arabic category to API relationship name
+  const relMap: Record<string, string> = {
+    "برمجة وتطوير": "development",
+    "تصميم": "design",
+    "تسويق": "marketing",
+    "تصوير": "photography",
+    "مؤثرات بصرية": "vfx"
+  }
+
+  const category = categoryMap[item.itemCategory] || "Development"
+  const relKey = relMap[item.itemCategory] || "development"
+  
+  // Extract specific fields based on the item category relationship
+  const typeRel = item[relKey] || {}
+
+  // Parse JSON fields safely if they arrive as strings
+  const parseJsonSafe = (data: any) => {
+    if (!data) return []
+    if (typeof data === 'string') {
+      try { return JSON.parse(data) } catch (e) { return [] }
+    }
+    return Array.isArray(data) ? data : []
+  }
 
   return {
     ...item,
-    itemCategory: categoryMap[item.type] || "Development",
+    itemCategory: category as any,
     status:
       item.status == true || item.status == 1 ? "Completed" : "In Progress",
     timeTook: item.timeTook ? `${item.timeTook} Days` : "Unknown",
@@ -28,21 +50,21 @@ const normalizeItem = (item: any): PortfolioItem => {
         : "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=2026&auto=format&fit=crop",
     
     // Development specific
-    technologies: (typeRel.technologies || []).map((t: any) => t.name || t),
-    features: (typeRel.features || []).map((f: any) => f.name || f),
+    technologies: parseJsonSafe(typeRel.technologies),
+    features: parseJsonSafe(typeRel.features),
     category: typeRel.category || "Unknown",
     url: typeRel.url || "#",
 
     // Design specific
     brandOverview: typeRel.brandOverview || "",
-    brandGoals: (typeRel.brandGoals || []).map((bg: any) => bg.name || bg),
+    brandGoals: parseJsonSafe(typeRel.brand_goals),
 
     // Marketing specific
-    platforms: (typeRel.platforms || []).map((p: any) => p.name || p),
-    results: (typeRel.results || []).map((r: any) => r.name || r),
+    platforms: parseJsonSafe(typeRel.platforms),
+    results: parseJsonSafe(typeRel.results),
 
-    // Photography / VFX specific
-    gallery: (typeRel.gallery || []).map((g: any) => g.url || g),
+    // Photography / VFX / Design specific galleries
+    gallery: parseJsonSafe(typeRel.galleryPhotography || typeRel.galleryVfx || typeRel.galleryDesign),
     result: typeRel.result || "",
     overview: typeRel.overview || "",
   }
@@ -155,10 +177,10 @@ export async function searchByTitle(
   title: string
 ): Promise<PortfolioItem[] | null> {
   try {
-    const response = await fetch(`${baseUrl}/api/search/searchByTitle/${title}`)
+    const response = await fetch(`${baseUrl}/api/searchByTitle/${encodeURIComponent(title)}`)
     if (!response.ok) return null
     const result = await response.json()
-    const items = result.data?.items || result.data || []
+    const items = result.data?.items || result.data || (Array.isArray(result) ? result : [])
     return Array.isArray(items) ? items.map(normalizeItem) : []
   } catch (error) {
     console.error(error)
@@ -171,10 +193,19 @@ export async function searchByType(
   type: string
 ): Promise<PortfolioItem[] | null> {
   try {
-    const response = await fetch(`${baseUrl}/api/search/searchByType/${type}`)
+    const arabicCategoryMap: Record<string, string> = {
+      development: "برمجة وتطوير",
+      design: "تصميم",
+      marketing: "تسويق",
+      photography: "تصوير",
+      vfx: "مؤثرات بصرية",
+    }
+    const mappedType = arabicCategoryMap[type.toLowerCase()] || type
+    
+    const response = await fetch(`${baseUrl}/api/searchByType/${encodeURIComponent(mappedType)}`)
     if (!response.ok) return null
     const result = await response.json()
-    const items = result.data?.items || result.data || []
+    const items = result.data?.items || result.data || (Array.isArray(result) ? result : [])
     return Array.isArray(items) ? items.map(normalizeItem) : []
   } catch (error) {
     console.error(error)
@@ -187,10 +218,10 @@ export async function searchBySlug(
   slug: string
 ): Promise<PortfolioItem | null> {
   try {
-    const response = await fetch(`${baseUrl}/api/search/searchBySlug/${slug}`)
+    const response = await fetch(`${baseUrl}/api/searchBySlug/${encodeURIComponent(slug)}`)
     if (!response.ok) return null
     const result = await response.json()
-    const item = result.data?.item || result.data || null
+    const item = result.data?.item || result.data || result
     return item ? normalizeItem(item) : null
   } catch (error) {
     console.error(error)

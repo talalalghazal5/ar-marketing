@@ -5,43 +5,38 @@ const baseUrl = process.env.LARAVEL_BASE_URL
 //* GET /api/item/:id ---> Fetch item by id
 async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const {id} = await params
-    const response = await fetch(`${baseUrl}/api/items/${id}`, {
+    const { id: itemId } = await params
+    const response = await fetch(`${baseUrl}/api/items/${itemId}`, {
       headers: {
-        "Accept": "application/json",
-        "Content-Type": "application/json "
+        "Accept": "Application/json",
       }
     })
     if (!response.ok) {
       return NextResponse.json({
         status: response.status,
         message: response.statusText,
-        additional: "There has been an error"
       })
     }
     const data = await response.json()
-    console.log(data)
     return NextResponse.json({
       status: 200,
-      ...data,
+      data,
     })
   } catch (error) {
-    return NextResponse.json({
-      message: "There has been an error"
-    })
+    return NextResponse.json(error)
   }
 }
 
 // * PUT /api/items/:id ---> Update an item
 async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const itemId = params.id
+    const { id: itemId } = await params
     const body = await request.json()
     
     const formData = new FormData()
@@ -85,10 +80,10 @@ async function PUT(
 // * DELETE /api/items/:id ---> Delete an item
 async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const itemId = params.id
+    const { id: itemId } = await params
     const response = await fetch(`${baseUrl}/api/items/${itemId}`, {
       method: "DELETE",
       headers: {

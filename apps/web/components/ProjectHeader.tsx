@@ -3,6 +3,7 @@ import { cn } from "@workspace/ui/lib/utils";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { PlayIcon, Star } from "@hugeicons/core-free-icons";
 import Link from "next/link";
+import Image from "next/image";
 import { buttonVariants } from "@workspace/ui/components/button";
 import type {
   DevelopmentPortfolioItem,
@@ -46,68 +47,84 @@ export default function ProjectHeader({ item }: ProjectHeaderProps) {
   }
 
   return (
-    <div className="relative w-full flex flex-col gap-6 text-start">
-      {/* Featured Badge & Category */}
-      <div className="flex flex-wrap items-center gap-3">
-        {item.featured && (
-          <Badge
-            variant="outline"
-            className="border-amber-500/30 bg-amber-500/10 px-2.5 py-1 text-xs font-semibold text-amber-500 flex items-center gap-1.5"
-          >
-            <HugeiconsIcon
-              strokeWidth={2.5}
-              className="text-amber-500 size-3.5"
-              icon={Star}
-            />
-            مميز
-          </Badge>
-        )}
-        <Badge
-          variant="secondary"
-          className="bg-primary/10 hover:bg-primary/15 text-primary border border-primary/20 px-2.5 py-1 text-xs font-medium"
-        >
-          {categoryDisplayName}
-        </Badge>
+    <div className="relative w-full flex flex-col items-center">
+      {/* Hero Image Section */}
+      <div className="relative w-full aspect-[21/9] sm:aspect-[2.5/1] overflow-hidden rounded-3xl border border-border/40 shadow-2xl mt-8">
+        <Image
+          src={item.image}
+          alt={item.title}
+          fill
+          priority
+          className="object-cover"
+        />
+        {/* Subtle gradient overlay to make it look premium */}
+        <div className="absolute inset-0 bg-linear-to-t from-background via-background/20 to-transparent" />
       </div>
 
-      {/* Title */}
-      <h1 className="font-sans text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground leading-tight max-w-4xl">
-        {item.title}
-      </h1>
-
-      {/* Description */}
-      <p className="text-base sm:text-lg text-muted-foreground max-w-3xl leading-relaxed">
-        {item.description}
-      </p>
-
-      {/* Action Buttons */}
-      <div className="flex flex-wrap gap-4 mt-2">
-        <Link
-          href={ctaUrl}
-          className={cn(
-            buttonVariants({ size: "lg", variant: "default" }),
-            "px-6 py-5 text-sm font-semibold rounded-lg"
+      {/* Content Section (Pulled up slightly over the image) */}
+      <div className="relative z-10 -mt-20 sm:-mt-32 w-full max-w-4xl flex flex-col gap-6 text-center items-center bg-card/60 backdrop-blur-2xl border border-border/50 rounded-3xl p-8 sm:p-12 shadow-xl">
+        {/* Featured Badge & Category */}
+        <div className="flex flex-wrap items-center justify-center gap-3">
+          {item.featured && (
+            <Badge
+              variant="outline"
+              className="border-amber-500/30 bg-amber-500/10 px-3 py-1.5 text-sm font-semibold text-amber-500 flex items-center gap-1.5"
+            >
+              <HugeiconsIcon
+                strokeWidth={2.5}
+                className="text-amber-500 size-4"
+                icon={Star}
+              />
+              مميز
+            </Badge>
           )}
-        >
-          {ctaText}
-        </Link>
-        {showLivePreview && (
+          <Badge
+            variant="secondary"
+            className="bg-primary/10 hover:bg-primary/15 text-primary border border-primary/20 px-3 py-1.5 text-sm font-medium"
+          >
+            {categoryDisplayName}
+          </Badge>
+        </div>
+
+        {/* Title */}
+        <h1 className="font-sans text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground leading-tight max-w-4xl">
+          {item.title}
+        </h1>
+
+        {/* Description */}
+        <p className="text-base sm:text-lg text-muted-foreground max-w-2xl leading-relaxed">
+          {item.description}
+        </p>
+
+        {/* Action Buttons */}
+        <div className="flex flex-wrap items-center justify-center gap-4 mt-4">
           <Link
-            href={livePreviewUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+            href={ctaUrl}
             className={cn(
-              buttonVariants({ size: "lg", variant: "outline" }),
-              "px-6 py-5 text-sm font-semibold rounded-lg border-border/40 hover:bg-muted"
+              buttonVariants({ size: "lg", variant: "default" }),
+              "px-8 py-6 text-base font-semibold rounded-xl shadow-lg shadow-primary/20 hover:shadow-primary/30 transition-all"
             )}
           >
-            <HugeiconsIcon
-              icon={PlayIcon}
-              className="size-4 me-1.5"
-            />
-            مشاهدة العرض الحي
+            {ctaText}
           </Link>
-        )}
+          {showLivePreview && (
+            <Link
+              href={livePreviewUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={cn(
+                buttonVariants({ size: "lg", variant: "outline" }),
+                "px-8 py-6 text-base font-semibold rounded-xl border-border/60 hover:bg-muted/50 backdrop-blur-sm"
+              )}
+            >
+              <HugeiconsIcon
+                icon={PlayIcon}
+                className="size-5 me-2"
+              />
+              مشاهدة العرض الحي
+            </Link>
+          )}
+        </div>
       </div>
     </div>
   );

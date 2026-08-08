@@ -16,6 +16,7 @@ import {
 } from "@workspace/ui/components/card"
 import { Badge } from "@workspace/ui/components/badge"
 import Image from "next/image"
+import Link from "next/link"
 import React from "react"
 import {
   Album02Icon,
@@ -24,19 +25,12 @@ import {
   StarIcon,
 } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
-import { Button, buttonVariants } from "@workspace/ui/components/button"
-import Link from "next/link"
+import { Button } from "@workspace/ui/components/button"
 
 type PortfolioCardShellProps = {
   image: string
   title: string
-  itemCategory:
-    | "Development"
-    | "Photography"
-    | "Design"
-    | "Vfx"
-    | "Marketing"
-    | "Other"
+  itemCategory: "Development" | "Photography" | "Design" | "Vfx" | "Marketing"
   featured?: boolean
   status: "In Progress" | "Completed"
   children?: React.ReactNode
@@ -46,9 +40,7 @@ type PortfolioCardShellProps = {
 const StatusChip = ({ status }: { status: "In Progress" | "Completed" }) => {
   const variant = status === "In Progress" ? "outline" : "default"
   const style =
-    status === "Completed"
-      ? "dark:bg-emerald-500/15 dark:text-emerald-400 dark:border-emerald-500/30 bg-emerald-100 text-emerald-800 border-emerald-200"
-      : ""
+    status === "Completed" ? "dark:bg-emerald-500/15 dark:text-emerald-400 dark:border-emerald-500/30 bg-emerald-100 text-emerald-800 border-emerald-200" : ""
   return (
     <Badge variant={variant} className={style}>
       {status}
@@ -59,13 +51,7 @@ const StatusChip = ({ status }: { status: "In Progress" | "Completed" }) => {
 const CategoryChip = ({
   category,
 }: {
-  category:
-    | "Development"
-    | "Photography"
-    | "Design"
-    | "Vfx"
-    | "Marketing"
-    | "Other"
+  category: "Development" | "Photography" | "Design" | "Vfx" | "Marketing"
 }) => {
   const portfolioCategoryStyles = {
     Development: "bg-blue-500/15 text-blue-400 border-blue-500/30",
@@ -73,7 +59,6 @@ const CategoryChip = ({
     Vfx: "bg-fuchsia-500/15 text-fuchsia-400 border-fuchsia-500/30",
     Design: "bg-orange-500/15 text-orange-400 border-orange-500/30",
     Marketing: "bg-emerald-500/15 text-emerald-400 border-emerald-500/30",
-    Other: "bg-slate-500/15 text-slate-400 border-slate-500/30",
   } as const
 
   return <Badge className={portfolioCategoryStyles[category]}>{category}</Badge>
@@ -147,21 +132,15 @@ const DevelopmentPortfolioItemCard = ({
     status={item.status}
     footer={
       <>
-        <Link
-          href={`/portfolio/${item.id}`}
-          className={buttonVariants({ variant: "outline" })}
-        >
-          Show details
+        <Link href={`/portfolio/${item.id}`} className="flex-1 sm:flex-none">
+          <Button variant={"outline"} className="w-full justify-center">
+            Show details
+          </Button>
         </Link>
         {item.status === "Completed" && (
-          <a
-            href={(item as DevelopmentPortfolioItem).url || "#"}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`${buttonVariants({ variant: "outline" })} flex-1 justify-center sm:flex-none ml-4`}
-          >
+          <Button className="flex-1 justify-center sm:flex-none">
             Live preview <HugeiconsIcon icon={SquareArrowUpRightIcon} />
-          </a>
+          </Button>
         )}
       </>
     }
@@ -174,10 +153,7 @@ const DevelopmentPortfolioItemCard = ({
       ))}
     </div>
     <div className="rounded-xl border border-border/40 bg-muted/20 p-3">
-      <CardDescription className="text-sm text-muted-foreground">
-        Project category: {item.category}
-      </CardDescription>
-      <CardDescription className="mt-2 flex items-center gap-2 text-sm text-muted-foreground">
+      <CardDescription className="flex items-center gap-2 text-sm text-muted-foreground">
         <HugeiconsIcon icon={Clock01Icon} size={20}/> Time took: {item.timeTook}
       </CardDescription>
     </div>
@@ -200,11 +176,10 @@ const PhotographyPortfolioItemCard = ({
     status={item.status}
     footer={
       <>
-        <Link
-          href={`/portfolio/${item.id}`}
-          className={buttonVariants({ variant: "outline" })}
-        >
-          Show details
+        <Link href={`/portfolio/${item.id}`} className="flex-1 sm:flex-none">
+          <Button variant={"outline"} className="w-full justify-center">
+            Show details
+          </Button>
         </Link>
         {item.status === "Completed" && (
           <Button className="flex-1 justify-center sm:flex-none">
@@ -215,10 +190,7 @@ const PhotographyPortfolioItemCard = ({
     }
   >
     <div className="rounded-xl border border-border/40 bg-muted/20 p-3">
-      <CardDescription className="text-sm text-muted-foreground">
-        Project category: {item.category}
-      </CardDescription>
-      <CardDescription className="mt-2 flex items-center gap-2 text-sm text-muted-foreground">
+      <CardDescription className="flex items-center gap-2 text-sm text-muted-foreground">
         <HugeiconsIcon icon={Clock01Icon} /> Time took: {item.timeTook}
       </CardDescription>
     </div>
@@ -236,21 +208,15 @@ const VfxPortfoltioItemCard = ({ item }: { item: VFXPortfolioItem }) => (
     featured={item.featured}
     status={item.status}
     footer={
-      <>
-        <Link
-          href={`/portfolio/${item.id}`}
-          className={buttonVariants({ variant: "outline" })}
-        >
+      <Link href={`/portfolio/${item.id}`} className="flex-1 sm:flex-none">
+        <Button variant={"outline"} className="w-full justify-center">
           Show details
-        </Link>
-      </>
+        </Button>
+      </Link>
     }
   >
     <div className="rounded-xl border border-border/40 bg-muted/20 p-3">
-      <CardDescription className="text-sm text-muted-foreground">
-        Project category: {item.category}
-      </CardDescription>
-      <CardDescription className="mt-2 flex items-center gap-2 text-sm text-muted-foreground">
+      <CardDescription className="flex items-center gap-2 text-sm text-muted-foreground">
         <HugeiconsIcon icon={Clock01Icon} /> Time took: {item.timeTook}
       </CardDescription>
     </div>
@@ -269,14 +235,11 @@ const MarketingPortfolioItemCard = ({
     featured={item.featured}
     status={item.status}
     footer={
-      <>
-        <Link
-          href={`/portfolio/${item.id}`}
-          className={buttonVariants({ variant: "outline" })}
-        >
+      <Link href={`/portfolio/${item.id}`} className="flex-1 sm:flex-none">
+        <Button variant={"outline"} className="w-full justify-center">
           Show details
-        </Link>
-      </>
+        </Button>
+      </Link>
     }
   >
     <div className="rounded-xl border border-border/40 bg-muted/20 p-3">
@@ -306,21 +269,14 @@ const DesignPortfolioItemCard = ({
     featured={item.featured}
     status={item.status}
     footer={
-      <>
-        <Link
-          href={`/portfolio/${item.id}`}
-          className={buttonVariants({ variant: "outline" })}
-        >
+      <Link href={`/portfolio/${item.id}`} className="flex-1 sm:flex-none">
+        <Button variant={"outline"} className="w-full justify-center">
           Show details
-        </Link>
-      </>
+        </Button>
+      </Link>
     }
   >
-    <div className="rounded-xl border border-border/40 bg-muted/20 p-3">
-      <CardDescription className="text-sm text-muted-foreground">
-        Project category: {item.category}
-      </CardDescription>
-    </div>
+
   </PortfolioCardShell>
 )
 

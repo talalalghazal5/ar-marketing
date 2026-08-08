@@ -523,7 +523,7 @@ export default function Page() {
         url: data.url,
       }
       console.log(itemJson)
-      const item = await createItem(itemJson)
+      const item = await createItem(itemJson as any)
       if (item) {
         console.log(item)
       }

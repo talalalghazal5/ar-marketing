@@ -15,7 +15,7 @@ export default function PortfolioSection() {
       const data = await getItems()
       if (data) {
         // Find featured items and limit to 4
-        const featured = data.filter((item) => item.featured == true).slice(0, 4)
+        const featured = data.filter((item) => item.featured).slice(0, 4)
         setItems(featured)
       }
     }
@@ -23,7 +23,7 @@ export default function PortfolioSection() {
   }, [])
 
   return (
-    <SectionTemplate id="portfolio" className="mt-40">
+    <SectionTemplate id="portfolio">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
