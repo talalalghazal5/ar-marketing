@@ -17,13 +17,13 @@ return new class extends Migration {
             $table->longText('description');
 
             $table->enum('itemCategory', [
-                'development',
-                'design',
-                'marketing',
-                'photography',
-                'vfx'
+                'برمجة وتطوير',
+                'تصميم',
+                'تسويق',
+                'تصوير',
+                'مؤثرات بصرية'
             ]);
-             $table->string('images')->nullable();
+             $table->text('image')->nullable();
 
             $table->boolean('featured')->default(false);
 

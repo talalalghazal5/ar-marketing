@@ -7,10 +7,11 @@ export type ProcessStep = {
 export interface Item {
   id: number
   title: string
+  slug: string
   description: string
   itemCategory: "Development" | "Photography" | "Design" | "Vfx" | "Marketing"
   featured: boolean
-  status: "In Progress" | "Completed"
+  status: "Completed" | "In Progress"
   timeTook: string
   image: string
 }
@@ -37,6 +38,7 @@ export interface GraphicDesignPortfolioItem extends Item {
   brandOverview: string
   brandGoals: string[]
   technologies: string[]
+  gallery: string[] | null
   category:
     | "Branding"
     | "Mockup"
@@ -48,6 +50,7 @@ export interface GraphicDesignPortfolioItem extends Item {
 export interface VFXPortfolioItem extends Item {
   result: string
   overview: string
+  gallery?: string[]
   category: "CGI" | "Motion Effects" | "Video Edits" | "Advertisment"
 }
 

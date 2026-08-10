@@ -1,0 +1,412 @@
+{
+  "info": {
+    "_postman_id": "255ef10a-4aa1-4577-ac67-d5c316701480",
+    "name": "ar_markeying",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "55275494",
+    "_collection_link": "https://go.postman.co/collection/55275494-255ef10a-4aa1-4577-ac67-d5c316701480?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "our work",
+      "item": [
+        {
+          "name": "store",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "title",
+                  "value": "VFX",
+                  "type": "text",
+                  "uuid": "470e1521-5600-489b-9424-fbee88a8f02b"
+                },
+                {
+                  "key": "slug",
+                  "value": "developmen",
+                  "type": "text",
+                  "uuid": "237b5ad4-fce3-466d-90de-4f866eabcd48"
+                },
+                {
+                  "key": "description",
+                  "value": "cghckghcghcgh",
+                  "type": "text",
+                  "uuid": "a36c5875-76dc-4feb-a0fc-014596e3d64c"
+                },
+                {
+                  "key": "type",
+                  "value": "photography",
+                  "type": "text",
+                  "uuid": "9f78ae32-e2f6-4bdd-81d6-80a4d8925095"
+                },
+                {
+                  "key": "featured",
+                  "value": "1",
+                  "type": "text",
+                  "uuid": "27913aaf-e547-4a29-a944-35607b758845"
+                },
+                {
+                  "key": "brand_overview",
+                  "value": "hvfgg",
+                  "type": "text",
+                  "uuid": "a31d8296-ef1d-4007-858f-ef361ea9f89f"
+                },
+                {
+                  "key": "time_took",
+                  "value": "10",
+                  "type": "text",
+                  "uuid": "541d2c15-797e-4a9b-85e7-46fa591cdda2"
+                },
+                {
+                  "key": "overview",
+                  "value": "lkhbkjbn",
+                  "type": "text",
+                  "uuid": "e6bf4eab-ef30-4678-81b6-df8faa3fb0af"
+                },
+                {
+                  "key": "result",
+                  "value": "jbjbjkb",
+                  "type": "text",
+                  "uuid": "3bbe1339-8bf7-4c03-86d2-a31556d66586"
+                },
+                {
+                  "key": "status",
+                  "value": "1",
+                  "type": "text",
+                  "uuid": "4335242f-1ce8-4a0a-974e-845ade59ebbb"
+                },
+                {
+                  "key": "url",
+                  "value": "http://127.0.0.1:8000/api/items",
+                  "type": "text",
+                  "uuid": "512e2b10-5e69-4d9a-af37-9bd99260fd53"
+                },
+                {
+                  "key": "brandOverview",
+                  "value": "bhhbhj",
+                  "type": "text",
+                  "uuid": "938a972a-fec6-4099-8b27-a0d78190d4fa"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/items",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "items"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "update",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "title",
+                  "value": "ar",
+                  "type": "text",
+                  "uuid": "470e1521-5600-489b-9424-fbee88a8f02b"
+                },
+                {
+                  "key": "slug",
+                  "value": "ar",
+                  "type": "text",
+                  "uuid": "237b5ad4-fce3-466d-90de-4f866eabcd48",
+                  "disabled": true
+                },
+                {
+                  "key": "description",
+                  "value": "cghckghcghcgh",
+                  "type": "text",
+                  "uuid": "a36c5875-76dc-4feb-a0fc-014596e3d64c",
+                  "disabled": true
+                },
+                {
+                  "key": "type",
+                  "value": "marketing",
+                  "type": "text",
+                  "uuid": "9f78ae32-e2f6-4bdd-81d6-80a4d8925095",
+                  "disabled": true
+                },
+                {
+                  "key": "featured",
+                  "value": "1",
+                  "type": "text",
+                  "uuid": "27913aaf-e547-4a29-a944-35607b758845",
+                  "disabled": true
+                },
+                {
+                  "key": "status",
+                  "value": "",
+                  "type": "text",
+                  "uuid": "a31d8296-ef1d-4007-858f-ef361ea9f89f",
+                  "disabled": true
+                },
+                {
+                  "key": "time_took",
+                  "value": "10",
+                  "type": "text",
+                  "uuid": "541d2c15-797e-4a9b-85e7-46fa591cdda2",
+                  "disabled": true
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/items/5?title=AR",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "items",
+                "5"
+              ],
+              "query": [
+                {
+                  "key": "title",
+                  "value": "AR"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "index",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/items",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "items"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "delete",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/items/1",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "items",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "searchByType",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/searchByType/p",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "searchByType",
+                "p"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "searchByTitle",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/searchByTitle/A",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "searchByTitle",
+                "A"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "searchBySlug",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/searchBySlug/V",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "searchBySlug",
+                "V"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "showById",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/items/2",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "items",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

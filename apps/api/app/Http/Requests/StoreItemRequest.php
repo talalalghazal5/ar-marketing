@@ -43,11 +43,11 @@ class StoreItemRequest extends FormRequest
             'itemCategory' => [
                 'required',
                 Rule::in([
-                    'development',
-                    'design',
-                    'marketing',
-                    'photography',
-                    'vfx'
+                    'برمجة وتطوير',
+                    'تصميم',
+                    'تسويق',
+                    'تصوير',
+                    'مؤثرات بصرية'
                 ])
             ],
             // 'images'=>[
@@ -76,30 +76,30 @@ class StoreItemRequest extends FormRequest
             // ],
 
             'url' => [
-                Rule::requiredIf($this->type == 'development'),
+                Rule::requiredIf($this->type == 'برمجة وتطوير'),
                 'nullable',
                 'url'
             ],
 
             'brandOverview' => [
-                Rule::requiredIf($this->type == 'design'),
+                Rule::requiredIf($this->type == 'تصميم'),
                 'nullable',
                 'string'
             ],
 
             'overview' => [
-                Rule::requiredIf($this->type == 'vfx'),
+                Rule::requiredIf($this->type == 'مؤثرات بصرية'),
                 'nullable',
                 'string'
             ],
 
-            // 'result' => [
-            //     Rule::requiredIf($this->type == 'vfx'),
-            //     'nullable',
-            //     'string'
-            // ],
+            'result' => [
+                Rule::requiredIf($this->type == 'مؤثرات بصرية'),
+                'nullable',
+                'string'
+            ],
             'technologies' => [
-                Rule::requiredIf($this->type == 'development'),
+                Rule::requiredIf($this->type == 'برمجة وتطوير'),
                 'array',
             ],
 
@@ -108,37 +108,37 @@ class StoreItemRequest extends FormRequest
                 'max:255',
             ],
              'galleryDesign' => [
-                Rule::requiredIf($this->type == 'design'),
+                Rule::requiredIf($this->type == 'تصميم'),
                 'sometimes',
                 'array',
             ],
 
             'galleryDesign.*' => [
                 'string',
-                'max:255',
+                'max:2048',
             ],
              'galleryVfx' => [
-                Rule::requiredIf($this->type == 'vfx'),
+                Rule::requiredIf($this->type == 'مؤثرات بصرية'),
                 'sometimes',
                 'array',
             ],
 
             'galleryVfx.*' => [
-                'string',
+                'array',
                 'max:255',
             ],
              'galleryPhotography' => [
-                Rule::requiredIf($this->type == 'photography'),
+                Rule::requiredIf($this->type == 'تصوير'),
                 'sometimes',
                 'array',
             ],
 
             'galleryPhotography.*' => [
-                'string',
+                'array',
                 'max:255',
             ],
               'brand_goals' => [
-                Rule::requiredIf($this->type == 'design'),
+                Rule::requiredIf($this->type == 'تصميم'),
                 'sometimes',
                 'array',
             ],
@@ -148,7 +148,7 @@ class StoreItemRequest extends FormRequest
                 'max:255',
             ],
               'features' => [
-                Rule::requiredIf($this->type == 'development'),
+                Rule::requiredIf($this->type == 'برمجة وتطوير'),
                 'sometimes',
                 'array',
             ],
@@ -158,7 +158,7 @@ class StoreItemRequest extends FormRequest
                 'max:255',
             ],
               'platforms' => [
-                Rule::requiredIf($this->type == 'marketing'),
+                Rule::requiredIf($this->type == 'تسويق'),
                 'sometimes',
                 'array',
             ],
@@ -168,7 +168,7 @@ class StoreItemRequest extends FormRequest
                 'max:255',
             ],
                'results' => [
-                Rule::requiredIf($this->type == 'marketing'),
+                Rule::requiredIf($this->type == 'تسويق'),
                 'sometimes',
                 'array',
             ],
@@ -178,7 +178,7 @@ class StoreItemRequest extends FormRequest
                 'max:255',
             ],
 
-            'images' => [
+            'image' => [
                 'nullable',
                 'string'
             ],

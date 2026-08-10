@@ -4,7 +4,7 @@ const baseUrl = process.env.LARAVEL_BASE_URL
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { method: string; query: string } }
+  { params }: { params: Promise<{ method: string; query: string }> }
 ) {
   try {
     const { method, query } = await params

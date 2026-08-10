@@ -5,10 +5,10 @@ const baseUrl = process.env.LARAVEL_BASE_URL
 //* GET /api/item/:id ---> Fetch item by id
 async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const itemId = params.id
+    const { id: itemId } = await params
     const response = await fetch(`${baseUrl}/api/items/${itemId}`, {
       headers: {
         "Accept": "Application/json",
@@ -33,10 +33,10 @@ async function GET(
 // * PUT /api/items/:id ---> Update an item
 async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const itemId = params.id
+    const { id: itemId } = await params
     const body = await request.json()
     
     const formData = new FormData()
@@ -80,10 +80,10 @@ async function PUT(
 // * DELETE /api/items/:id ---> Delete an item
 async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const itemId = params.id
+    const { id: itemId } = await params
     const response = await fetch(`${baseUrl}/api/items/${itemId}`, {
       method: "DELETE",
       headers: {

@@ -15,7 +15,7 @@ class Item extends Model
         'featured',
         'status',
         'timeTook',
-        'images',
+        'image',
     ];
 
     protected $casts = [

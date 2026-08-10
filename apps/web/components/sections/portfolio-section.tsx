@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react"
 import SectionTemplate from "@/components/section-template"
 import SectionHeading from "@/components/section-heading"
 import { motion } from "motion/react"
-import { getItems } from "@/actions/portfolio-actions"
+import { getItems } from "@/app/actions/portfolio-actions"
 import { PortfolioItem } from "@/data/types"
 import PortfolioItemCard from "@/app/portfolio/components/portfolio-item-card"
 
@@ -15,7 +15,7 @@ export default function PortfolioSection() {
       const data = await getItems()
       if (data) {
         // Find featured items and limit to 4
-        const featured = data.filter((item) => item.featured == true || item.featured == 1 || item.featured === "1").slice(0, 4)
+        const featured = data.filter((item) => item.featured).slice(0, 4)
         setItems(featured)
       }
     }
