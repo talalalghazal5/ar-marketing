@@ -68,7 +68,7 @@ export default function ProjectHeader({ item }: ProjectHeaderProps) {
           {item.featured && (
             <Badge
               variant="outline"
-              className="border-amber-500/30 bg-amber-500/10 px-3 py-1.5 text-sm font-semibold text-amber-500 flex items-center gap-1.5"
+              className="border-amber-500/30 bg-amber-500/10 px-3 py-1.5 text-sm font-thmanyah-subheading-sans font-semibold text-amber-500 flex items-center gap-1.5"
             >
               <HugeiconsIcon
                 strokeWidth={2.5}
@@ -80,19 +80,19 @@ export default function ProjectHeader({ item }: ProjectHeaderProps) {
           )}
           <Badge
             variant="secondary"
-            className="bg-primary/10 hover:bg-primary/15 text-primary border border-primary/20 px-3 py-1.5 text-sm font-medium"
+            className="bg-primary/10 hover:bg-primary/15 text-primary border border-primary/30 px-3 py-1.5 text-sm font-mediumc font-thmanyah-subheading-sans"
           >
             {categoryDisplayName}
           </Badge>
         </div>
 
         {/* Title */}
-        <h1 className="font-sans text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground leading-tight max-w-4xl">
+        <h1 className="font-thmanyah-heading text-3xl sm:text-4xl md:text-5xl tracking-tight text-foreground leading-tight max-w-4xl">
           {item.title}
         </h1>
 
         {/* Description */}
-        <p className="text-base sm:text-lg text-muted-foreground max-w-2xl leading-relaxed">
+        <p className="text-base sm:text-lg text-muted-foreground max-w-2xl leading-relaxed font-thmanyah-subheading-sans">
           {item.description}
         </p>
 
@@ -102,7 +102,7 @@ export default function ProjectHeader({ item }: ProjectHeaderProps) {
             href={ctaUrl}
             className={cn(
               buttonVariants({ size: "lg", variant: "default" }),
-              "px-8 py-6 text-base font-semibold rounded-xl shadow-lg shadow-primary/20 hover:shadow-primary/30 transition-all"
+              "px-8 py-6 text-base rounded-xl shadow-lg shadow-primary/20 hover:shadow-primary/30 transition-all font-thmanyah-subheading-sans"
             )}
           >
             {ctaText}
@@ -114,7 +114,7 @@ export default function ProjectHeader({ item }: ProjectHeaderProps) {
               rel="noopener noreferrer"
               className={cn(
                 buttonVariants({ size: "lg", variant: "outline" }),
-                "px-8 py-6 text-base font-semibold rounded-xl border-border/60 hover:bg-muted/50 backdrop-blur-sm"
+                "px-8 py-6 text-base font-semibold rounded-xl border-border/60 hover:bg-muted/50 backdrop-blur-sm font-thmanyah-subheading-sans"
               )}
             >
               <HugeiconsIcon

@@ -25,7 +25,6 @@ const normalizeItem = (item: any): PortfolioItem => {
 
   const category = categoryMap[item.itemCategory] || "Development"
   const relKey = relMap[item.itemCategory] || "development"
-  
   // Extract specific fields based on the item category relationship
   const typeRel = item[relKey] || {}
 
@@ -33,17 +32,17 @@ const normalizeItem = (item: any): PortfolioItem => {
   const parseJsonSafe = (data: any) => {
     if (!data) return []
     if (typeof data === 'string') {
-      try { return JSON.parse(data) } catch (e) { return [] }
+      try { return JSON.parse(data) } catch { return [] }
     }
     return Array.isArray(data) ? data : []
   }
-
+  console.log("Normalizing item: ", item, "with typeRel: ", typeRel, "and category: ", item.itemCategory, "Relation key: ", relKey)
   return {
     ...item,
     itemCategory: category as any,
     status:
       item.status == true || item.status == 1 ? "Completed" : "In Progress",
-    timeTook: item.timeTook ? `${item.timeTook} Days` : "Unknown",
+    timeTook: item.timeTook ? `${item.timeTook} أيام` : "غير معروف",
     image:
       item.image
         ? item.image
@@ -65,14 +64,21 @@ const normalizeItem = (item: any): PortfolioItem => {
 
     // Photography / VFX / Design specific galleries
     gallery: parseJsonSafe(typeRel.galleryPhotography || typeRel.galleryVfx || typeRel.galleryDesign),
-    result: typeRel.result || "",
-    overview: typeRel.overview || "",
+    // Handle VFX result and overview - try relational data first, then fallback to root
+    result: (typeRel.result || item.result || ""),
+    overview: (typeRel.overview || item.overview || ""),
   }
 }
 
 export async function getItems(): Promise<PortfolioItem[] | null> {
   try {
-    const response = await fetch(`${baseUrl}/api/items`)
+    const response = await fetch(`${baseUrl}/api/items`, {
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      method: "GET"
+    })
     if (!response.ok) {
       return null
     }
@@ -95,9 +101,11 @@ export async function getItem(id: string): Promise<PortfolioItem | null> {
     if (!response.ok) {
       return null
     }
-    const data = await response.json()
+    const data = await response.json();
+    console.log("Raw item data: ", data)
     // Extract item from response (assuming standard API response format)
     const itemData = data.item || data
+    console.log("Normalized item: ", normalizeItem(itemData))
     return itemData ? normalizeItem(itemData) : null
   } catch (error) {
     console.log('Error in getItem:', error)

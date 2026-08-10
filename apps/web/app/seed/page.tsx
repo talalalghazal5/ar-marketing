@@ -505,7 +505,7 @@ export default function Page() {
         title: data.title,
         slug: data.title.split(" ", 3).join("-"),
         description: data.description,
-        brandGoals: data.brandGoals,
+        brand_goals: data.brandGoals,
         brandOverview: data.brandOverview,
         category: data.category,
         featured: data.featured,

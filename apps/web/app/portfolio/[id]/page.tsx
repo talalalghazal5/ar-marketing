@@ -15,7 +15,7 @@ import type {
   PhotographyPortfolioItem,
   GraphicDesignPortfolioItem,
   VFXPortfolioItem,
-  MarketingPortfolioItem
+  MarketingPortfolioItem,
 } from "@/data/types"
 
 async function ProjectContent({ params }: { params: { id: string } }) {
@@ -25,7 +25,9 @@ async function ProjectContent({ params }: { params: { id: string } }) {
   if (!item) {
     return (
       <SectionTemplate className="items-center justify-center">
-        <h1 className="text-3xl">No items found</h1>
+        <h1 className="font-thmanyah-heading text-3xl">
+          لم يتم العثور على العنصر
+        </h1>
       </SectionTemplate>
     )
   }
@@ -33,7 +35,7 @@ async function ProjectContent({ params }: { params: { id: string } }) {
   const timeTook =
     "timeTook" in item && item.timeTook !== undefined
       ? item.timeTook
-      : "Unknown"
+      : "غير متاح"
 
   // Handle Development Category
   if (item.itemCategory === "Development") {
@@ -45,26 +47,28 @@ async function ProjectContent({ params }: { params: { id: string } }) {
         </SectionTemplate>
 
         <SectionTemplate className="min-h-0 py-16">
-          <div className="max-w-4xl mx-auto px-6 space-y-16">
+          <div className="mx-auto max-w-4xl space-y-16 px-6">
             <div>
-              <h2 className="mb-4 text-3xl font-bold tracking-tight text-foreground">
-                Project Overview
+              <h2 className="mb-4 font-thmanyah-heading text-3xl text-foreground">
+                لمحة عامة عن المشروع
               </h2>
-              <p className="text-lg leading-relaxed text-muted-foreground">
+              <p className="font-thmanyah-subheading-sans text-lg leading-relaxed text-muted-foreground">
                 {item.description}
               </p>
             </div>
 
             {devItem.features && devItem.features.length > 0 && (
               <div>
-                <h3 className="mb-4 text-2xl font-semibold text-foreground">
+                <h3 className="mb-4 font-thmanyah-heading text-2xl text-foreground">
                   Key Features
                 </h3>
                 <ul className="grid gap-4 md:grid-cols-2">
                   {devItem.features.map((feature, idx) => (
                     <li key={idx} className="flex items-start gap-3">
                       <div className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary"></div>
-                      <span className="text-base text-muted-foreground">{feature}</span>
+                      <span className="font-thmanyah-subheading-sans text-base text-muted-foreground">
+                        {feature}
+                      </span>
                     </li>
                   ))}
                 </ul>
@@ -73,12 +77,15 @@ async function ProjectContent({ params }: { params: { id: string } }) {
 
             {devItem.technologies && devItem.technologies.length > 0 && (
               <div>
-                <h3 className="mb-4 text-2xl font-semibold text-foreground">
+                <h3 className="mb-4 font-thmanyah-heading text-2xl text-foreground">
                   Technology Stack
                 </h3>
                 <div className="flex flex-wrap gap-2">
                   {devItem.technologies.map((tech, idx) => (
-                    <span key={idx} className="rounded-full border border-border/30 px-3 py-1 text-sm font-medium">
+                    <span
+                      key={idx}
+                      className="rounded-full border border-border/30 px-3 py-1 font-thmanyah-subheading-sans text-sm font-medium"
+                    >
                       {tech}
                     </span>
                   ))}
@@ -107,36 +114,40 @@ async function ProjectContent({ params }: { params: { id: string } }) {
         </SectionTemplate>
 
         <SectionTemplate className="min-h-0 py-16">
-          <div className="max-w-4xl mx-auto px-6 space-y-16">
+          <div className="mx-auto max-w-4xl space-y-16 px-6">
             <div>
-              <h2 className="mb-4 text-3xl font-bold tracking-tight text-foreground">
+              <h2 className="mb-4 font-thmanyah-heading text-3xl text-foreground">
                 Project Details
               </h2>
-              <p className="text-lg leading-relaxed text-muted-foreground">
+              <p className="font-thmanyah-subheading-sans text-lg leading-relaxed text-muted-foreground">
                 {item.description}
               </p>
             </div>
 
             <div>
-              <h3 className="mb-4 text-2xl font-semibold text-foreground">
+              <h3 className="mb-4 font-thmanyah-heading text-2xl text-foreground">
                 Project Gallery
               </h3>
               {photoItem.gallery && photoItem.gallery.length > 0 ? (
                 <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                   {photoItem.gallery.map((imgUrl, idx) => (
-                    <div key={idx} className="relative aspect-4/3 overflow-hidden rounded-xl border border-border/50 bg-muted/50">
+                    <div
+                      key={idx}
+                      className="relative aspect-4/3 overflow-hidden rounded-xl border border-border/50 bg-muted/50"
+                    >
                       <Image
                         src={imgUrl}
                         alt={`Gallery Image ${idx + 1}`}
                         fill
                         className="object-cover transition-transform duration-500 hover:scale-105"
                       />
+                      <div className="pointer-events-none absolute inset-0 z-10 bg-linear-to-t from-black/70 via-black/20 to-transparent"></div>
                     </div>
                   ))}
                 </div>
               ) : (
-                <div className="text-center py-12">
-                  <p className="text-muted-foreground">
+                <div className="py-12 text-center">
+                  <p className="font-thmanyah-subheading-sans text-muted-foreground">
                     No gallery images available for this project.
                   </p>
                 </div>
@@ -164,13 +175,13 @@ async function ProjectContent({ params }: { params: { id: string } }) {
         </SectionTemplate>
 
         <SectionTemplate className="min-h-0 py-16">
-          <div className="max-w-4xl mx-auto px-6 space-y-16">
+          <div className="mx-auto max-w-4xl space-y-16 px-6">
             {designItem.brandOverview && (
               <div>
-                <h2 className="mb-4 text-3xl font-bold tracking-tight text-foreground">
-                  Brand Overview
+                <h2 className="mb-4 font-thmanyah-heading text-3xl text-foreground">
+                  لمحة عامة عن العلامة التجارية
                 </h2>
-                <p className="text-lg leading-relaxed text-muted-foreground">
+                <p className="font-thmanyah-subheading-sans text-lg leading-relaxed text-muted-foreground">
                   {designItem.brandOverview}
                 </p>
               </div>
@@ -178,14 +189,16 @@ async function ProjectContent({ params }: { params: { id: string } }) {
 
             {designItem.brandGoals && designItem.brandGoals.length > 0 && (
               <div>
-                <h3 className="mb-4 text-2xl font-semibold text-foreground">
-                  Brand Goals
+                <h3 className="mb-4 font-thmanyah-heading text-2xl text-foreground">
+                  أهداف العلامة التجارية
                 </h3>
                 <ul className="space-y-4">
                   {designItem.brandGoals.map((goal, idx) => (
                     <li key={idx} className="flex items-start gap-3">
                       <div className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary"></div>
-                      <span className="text-base text-muted-foreground">{goal}</span>
+                      <span className="font-thmanyah-subheading-sans text-base text-muted-foreground">
+                        {goal}
+                      </span>
                     </li>
                   ))}
                 </ul>
@@ -194,12 +207,15 @@ async function ProjectContent({ params }: { params: { id: string } }) {
 
             {designItem.technologies && designItem.technologies.length > 0 && (
               <div>
-                <h3 className="mb-4 text-2xl font-semibold text-foreground">
+                <h3 className="mb-4 font-thmanyah-heading text-2xl text-foreground">
                   Tools Used
                 </h3>
                 <div className="flex flex-wrap gap-2">
                   {designItem.technologies.map((tool, idx) => (
-                    <span key={idx} className="rounded-full border border-border/30 px-3 py-1 text-sm font-medium">
+                    <span
+                      key={idx}
+                      className="rounded-full border border-border/30 px-3 py-1 font-thmanyah-subheading-sans text-sm font-medium"
+                    >
                       {tool}
                     </span>
                   ))}
@@ -208,7 +224,36 @@ async function ProjectContent({ params }: { params: { id: string } }) {
             )}
           </div>
         </SectionTemplate>
-
+        <SectionDivider />
+        <SectionTemplate>
+          <div className="mx-auto space-y-16 px-6">
+            {designItem.gallery && designItem.gallery.length > 0 ? (
+              <div>
+                <h3 className="mb-4 font-thmanyah-heading text-2xl text-foreground">
+                  الهوية البصرية للعلامة التجارية
+                </h3>
+                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  {designItem.gallery.map((imgUrl, idx) => (
+                    <div
+                      key={idx}
+                      className="relative aspect-square w-100 overflow-hidden rounded-xl"
+                    >
+                      <Image
+                        src={imgUrl}
+                        alt={`Project gallery image ${idx + 1}`}
+                        fill
+                        className="object-cover"
+                        
+                        loading="lazy"
+                      />
+                      <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent"></div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ) : null}
+          </div>
+        </SectionTemplate>
         <SectionDivider />
         <ProjectMetadata item={item} timeTook={timeTook} />
 
@@ -228,13 +273,13 @@ async function ProjectContent({ params }: { params: { id: string } }) {
         </SectionTemplate>
 
         <SectionTemplate className="min-h-0 py-16">
-          <div className="max-w-4xl mx-auto px-6 space-y-16">
+          <div className="mx-auto max-w-4xl space-y-16 px-6">
             {vfxItem.overview && (
               <div>
-                <h2 className="mb-4 text-3xl font-bold tracking-tight text-foreground">
-                  Project Overview
+                <h2 className="mb-4 font-thmanyah-heading text-3xl text-foreground">
+                  لمحة عامة عن المشروع
                 </h2>
-                <p className="text-lg leading-relaxed text-muted-foreground">
+                <p className="font-thmanyah-subheading-sans text-lg leading-relaxed text-muted-foreground">
                   {vfxItem.overview}
                 </p>
               </div>
@@ -242,21 +287,28 @@ async function ProjectContent({ params }: { params: { id: string } }) {
 
             {vfxItem.result && (
               <div>
-                <h3 className="mb-4 text-2xl font-semibold text-foreground">
-                  Final Outcome
+                <h3 className="mb-4 font-thmanyah-heading text-2xl text-foreground">
+                  النتيجة النهائية
                 </h3>
-                <Link
+                {/* <Link
                   href={vfxItem.result}
                   target="_blank"
                   rel="noopener noreferrer"
                   className={cn(
                     buttonVariants({ size: "lg", variant: "default" }),
-                    "px-8 py-6 text-base font-semibold rounded-xl shadow-lg shadow-primary/20 hover:shadow-primary/30 transition-all"
+                    "rounded-xl px-8 py-6 text-base font-semibold shadow-lg shadow-primary/20 transition-all hover:shadow-primary/30 font-thmanyah-subheading-sans"
                   )}
                 >
-                  <HugeiconsIcon icon={PlayIcon} className="size-5 me-2" />
+                  <HugeiconsIcon icon={PlayIcon} className="me-2 size-5" />
                   مشاهدة النتيجة النهائية
-                </Link>
+                </Link> */}
+                <iframe
+                  src={vfxItem.result}
+                  allowFullScreen
+                  className="mt-10 h-200 w-full rounded-2xl bg-transparent"
+                  data-lenis-prevent
+                  loading="lazy"
+                ></iframe>
               </div>
             )}
           </div>
@@ -281,44 +333,49 @@ async function ProjectContent({ params }: { params: { id: string } }) {
         </SectionTemplate>
 
         <SectionTemplate className="min-h-0 py-16">
-          <div className="max-w-4xl mx-auto px-6 space-y-16">
+          <div className="mx-auto max-w-4xl space-y-16 px-6">
             <div>
-              <h2 className="mb-4 text-3xl font-bold tracking-tight text-foreground">
-                Campaign Overview
+              <h2 className="mb-4 font-thmanyah-heading text-3xl text-foreground">
+                نظرة عامة عن الحملة التسويقية
               </h2>
-              <p className="text-lg leading-relaxed text-muted-foreground">
+              <p className="font-thmanyah-subheading-sans text-lg leading-relaxed text-muted-foreground">
                 {item.description}
               </p>
             </div>
 
             <div>
-              <h3 className="mb-4 text-2xl font-semibold text-foreground">
-                Campaign Results
+              <h3 className="mb-4 font-thmanyah-heading text-2xl text-foreground">
+                نتائج الحملة التسويقية
               </h3>
               <div className="space-y-4">
-                {marketingItem.results && marketingItem.results.length > 0 ? (
-                  marketingItem.results.map((result, idx) => (
-                    <div key={idx} className="flex items-start gap-3">
-                      <div className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-emerald-500/20 bg-emerald-500/10 text-emerald-400"></div>
-                      <span className="text-base text-muted-foreground">{result}</span>
-                    </div>
-                  ))
-                ) : null}
+                {marketingItem.results && marketingItem.results.length > 0
+                  ? marketingItem.results.map((result, idx) => (
+                      <div key={idx} className="flex items-start gap-3">
+                        <div className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-emerald-500/20 bg-emerald-500/10 text-emerald-400"></div>
+                        <span className="font-thmanyah-subheading-sans text-base text-muted-foreground">
+                          {result}
+                        </span>
+                      </div>
+                    ))
+                  : null}
               </div>
             </div>
 
             <div>
-              <h3 className="mb-4 text-2xl font-semibold text-foreground">
+              <h3 className="mb-4 font-thmanyah-heading text-2xl text-foreground">
                 Targeted Platforms
               </h3>
               <div className="flex flex-wrap gap-2">
-                {marketingItem.platforms && marketingItem.platforms.length > 0 ? (
-                  marketingItem.platforms.map((platform, idx) => (
-                    <span key={idx} className="rounded-full border border-border/30 px-3 py-1 text-sm font-medium">
-                      {platform}
-                    </span>
-                  ))
-                ) : null}
+                {marketingItem.platforms && marketingItem.platforms.length > 0
+                  ? marketingItem.platforms.map((platform, idx) => (
+                      <span
+                        key={idx}
+                        className="rounded-full border border-border/30 px-3 py-1 font-thmanyah-subheading-sans text-sm font-medium"
+                      >
+                        {platform}
+                      </span>
+                    ))
+                  : null}
               </div>
             </div>
           </div>
@@ -337,20 +394,22 @@ async function ProjectContent({ params }: { params: { id: string } }) {
   return (
     <SectionTemplate className="pt-20">
       <div className="flex flex-col items-center gap-4 text-center">
-        <h1 className="text-4xl font-bold">{item.title}</h1>
-        <p className="max-w-2xl text-muted-foreground">{item.description}</p>
+        <h1 className="font-thmanyah-heading text-4xl">{item.title}</h1>
+        <p className="max-w-2xl font-thmanyah-subheading-sans text-muted-foreground">
+          {item.description}
+        </p>
       </div>
     </SectionTemplate>
   )
 }
 
-export default async function Page({ params }: { params: { id: string } }) {
+export default function Page({ params }: { params: { id: string } }) {
   return (
-    <div className="relative min-h-screen bg-background overflow-hidden">
+    <div className="relative min-h-screen overflow-hidden bg-background">
       {/* Background Glows */}
       <div className="fixed -top-100 -left-150 z-0 h-200 w-250 rounded-full bg-linear-to-br from-accent/20 to-primary/80 blur-[150px]" />
       <div className="fixed -right-100 -bottom-160 z-0 h-230 w-200 rounded-full bg-linear-to-br from-primary/70 to-accent/20 blur-[100px]" />
-      
+
       <div className="relative z-10">
         <ProjectContent params={params} />
       </div>
