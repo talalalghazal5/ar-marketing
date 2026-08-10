@@ -19,9 +19,7 @@ import Image from "next/image"
 import Link from "next/link"
 import React from "react"
 import {
-  Album02Icon,
   Clock01Icon,
-  SquareArrowUpRightIcon,
   StarIcon,
 } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
@@ -40,10 +38,12 @@ type PortfolioCardShellProps = {
 const StatusChip = ({ status }: { status: "In Progress" | "Completed" }) => {
   const variant = status === "In Progress" ? "outline" : "default"
   const style =
-    status === "Completed" ? "dark:bg-emerald-500/15 dark:text-emerald-400 dark:border-emerald-500/30 bg-emerald-100 text-emerald-800 border-emerald-200" : ""
+    status === "Completed"
+      ? "dark:bg-emerald-500/15 dark:text-emerald-400 dark:border-emerald-500/30 bg-emerald-100 text-emerald-800 border-emerald-200"
+      : ""
   return (
-    <Badge variant={variant} className={style}>
-      {status}
+    <Badge variant={variant} className={`${style} font-thmanyah-subheading-sans`}>
+      {status === "Completed" ? "مكتمل" : "قيد التنفيذ"}
     </Badge>
   )
 }
@@ -61,13 +61,21 @@ const CategoryChip = ({
     Marketing: "bg-emerald-500/15 text-emerald-400 border-emerald-500/30",
   } as const
 
-  return <Badge className={portfolioCategoryStyles[category]}>{category}</Badge>
+  const categoryMap: Record<string, string> = {
+    Development: "برمجة وتطوير",
+    Design: "تصميم",
+    Marketing: "تسويق",
+    Photography: "تصوير",
+    Vfx: "مؤثرات بصرية",
+  }
+
+  return <Badge className={`${portfolioCategoryStyles[category]} font-thmanyah-subheading-sans`}>{categoryMap[category]}</Badge>
 }
 
 const FeaturedChip = () => (
-  <Badge className="bg-amber-800/70 text-amber-300">
+  <Badge className="bg-amber-800/70 text-amber-300 font-thmanyah-subheading-sans">
     <HugeiconsIcon icon={StarIcon} />
-    Featured
+    مميز
   </Badge>
 )
 
@@ -80,8 +88,8 @@ const PortfolioCardShell = ({
   children,
   footer,
 }: PortfolioCardShellProps) => (
-  <Card className="group p-0 flex h-full flex-col overflow-hidden border border-border/60 bg-card/80 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-[0_20px_60px_-20px_rgba(0,0,0,0.55)]">
-    <div className="relative aspect-4/3    overflow-hidden border-b border-border/50 bg-muted/20">
+  <Card className="group flex h-full flex-col overflow-hidden border border-border/60 bg-card/80 p-0 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-[0_20px_60px_-20px_rgba(0,0,0,0.55)]">
+    <div className="relative aspect-4/3 overflow-hidden border-b border-border/50 bg-muted/20">
       <Image
         src={image}
         alt={title}
@@ -94,7 +102,7 @@ const PortfolioCardShell = ({
 
     <CardHeader className="gap-3 px-5 pt-5">
       <div className="flex items-start justify-between gap-3">
-        <CardTitle className="text-xl leading-tight font-semibold text-foreground">
+        <CardTitle className="text-xl leading-tight font-semibold text-foreground font-thmanyah-heading">
           {title}
         </CardTitle>
         <div className="shrink-0">
@@ -133,31 +141,31 @@ const DevelopmentPortfolioItemCard = ({
     footer={
       <>
         <Link href={`/portfolio/${item.id}`} className="flex-1 sm:flex-none">
-          <Button variant={"outline"} className="w-full justify-center">
-            Show details
+          <Button variant={"outline"} className="w-full justify-center font-thmanyah-subheading-sans">
+            عرض التفاصيل
           </Button>
         </Link>
-        {item.status === "Completed" && (
-          <Button className="flex-1 justify-center sm:flex-none">
-            Live preview <HugeiconsIcon icon={SquareArrowUpRightIcon} />
-          </Button>
-        )}
       </>
     }
   >
     <div className="flex flex-wrap gap-2">
       {item.technologies.map((tech) => (
-        <Badge key={tech} variant={"outline"} className="rounded-full px-2.5 py-1">
+        <Badge
+          key={tech}
+          variant={"outline"}
+          className="rounded-full px-2.5 py-1 font-thmanyah-subheading-sans"
+        >
           {tech}
         </Badge>
       ))}
     </div>
     <div className="rounded-xl border border-border/40 bg-muted/20 p-3">
-      <CardDescription className="flex items-center gap-2 text-sm text-muted-foreground">
-        <HugeiconsIcon icon={Clock01Icon} size={20}/> Time took: {item.timeTook}
+      <CardDescription className="flex items-center gap-2 text-sm text-muted-foreground font-thmanyah-subheading-sans">
+        <HugeiconsIcon icon={Clock01Icon} size={20} /> مدة التنفيذ:{" "}
+        {item.timeTook}
       </CardDescription>
     </div>
-    <CardDescription className="text-sm leading-6 text-foreground/90">
+    <CardDescription className="text-sm leading-6 text-foreground/90 font-thmanyah-subheading-sans">
       {item.description}
     </CardDescription>
   </PortfolioCardShell>
@@ -177,24 +185,19 @@ const PhotographyPortfolioItemCard = ({
     footer={
       <>
         <Link href={`/portfolio/${item.id}`} className="flex-1 sm:flex-none">
-          <Button variant={"outline"} className="w-full justify-center">
-            Show details
+          <Button variant={"outline"} className="w-full justify-center font-thmanyah-subheading-sans">
+            عرض التفاصيل
           </Button>
         </Link>
-        {item.status === "Completed" && (
-          <Button className="flex-1 justify-center sm:flex-none">
-            View project gallery <HugeiconsIcon icon={Album02Icon} />
-          </Button>
-        )}
       </>
     }
   >
     <div className="rounded-xl border border-border/40 bg-muted/20 p-3">
-      <CardDescription className="flex items-center gap-2 text-sm text-muted-foreground">
-        <HugeiconsIcon icon={Clock01Icon} /> Time took: {item.timeTook}
+      <CardDescription className="flex items-center gap-2 text-sm text-muted-foreground font-thmanyah-subheading-sans">
+        <HugeiconsIcon icon={Clock01Icon} /> مدة التنفيذ {item.timeTook}
       </CardDescription>
     </div>
-    <CardDescription className="text-sm leading-6 text-foreground/90">
+    <CardDescription className="text-sm leading-6 text-foreground/90 font-thmanyah-subheading-sans">
       {item.description}
     </CardDescription>
   </PortfolioCardShell>
@@ -209,15 +212,15 @@ const VfxPortfoltioItemCard = ({ item }: { item: VFXPortfolioItem }) => (
     status={item.status}
     footer={
       <Link href={`/portfolio/${item.id}`} className="flex-1 sm:flex-none">
-        <Button variant={"outline"} className="w-full justify-center">
-          Show details
+        <Button variant={"outline"} className="w-full justify-center font-thmanyah-subheading-sans">
+          عرض التفاصيل
         </Button>
       </Link>
     }
   >
     <div className="rounded-xl border border-border/40 bg-muted/20 p-3">
-      <CardDescription className="flex items-center gap-2 text-sm text-muted-foreground">
-        <HugeiconsIcon icon={Clock01Icon} /> Time took: {item.timeTook}
+      <CardDescription className="flex items-center gap-2 text-sm text-muted-foreground font-thmanyah-subheading-sans">
+        <HugeiconsIcon icon={Clock01Icon} /> مدة التنفيذ {item.timeTook}
       </CardDescription>
     </div>
   </PortfolioCardShell>
@@ -236,20 +239,20 @@ const MarketingPortfolioItemCard = ({
     status={item.status}
     footer={
       <Link href={`/portfolio/${item.id}`} className="flex-1 sm:flex-none">
-        <Button variant={"outline"} className="w-full justify-center">
-          Show details
+        <Button variant={"outline"} className="w-full justify-center font-thmanyah-subheading-sans">
+          عرض التفاصيل
         </Button>
       </Link>
     }
   >
     <div className="rounded-xl border border-border/40 bg-muted/20 p-3">
-      <CardDescription className="flex items-center gap-2 text-sm text-muted-foreground">
-        <HugeiconsIcon icon={Clock01Icon} /> Time took: {item.timeTook}
+      <CardDescription className="flex items-center gap-2 text-sm text-muted-foreground font-thmanyah-subheading-sans">
+        <HugeiconsIcon icon={Clock01Icon} /> مدة التنفيذ {item.timeTook}
       </CardDescription>
     </div>
     <div className="flex flex-wrap gap-2">
       {item.results.map((result) => (
-        <Badge key={result} variant={"outline"}>
+        <Badge key={result} variant={"outline"} className="font-thmanyah-subheading-sans">
           {result}
         </Badge>
       ))}
@@ -270,13 +273,18 @@ const DesignPortfolioItemCard = ({
     status={item.status}
     footer={
       <Link href={`/portfolio/${item.id}`} className="flex-1 sm:flex-none">
-        <Button variant={"outline"} className="w-full justify-center">
-          Show details
+        <Button variant={"outline"} className="w-full justify-center font-thmanyah-subheading-sans">
+          عرض التفاصيل
         </Button>
       </Link>
     }
   >
-
+    <div className="rounded-xl border border-border/40 bg-muted/20 p-3">
+      <CardDescription className="flex items-center gap-2 text-sm text-muted-foreground font-thmanyah-subheading-sans">
+        <HugeiconsIcon icon={Clock01Icon} size={20} /> مدة التنفيذ:{" "}
+        {item.timeTook}
+      </CardDescription>
+    </div>
   </PortfolioCardShell>
 )
 
