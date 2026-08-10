@@ -193,7 +193,13 @@ class ItemController extends Controller
 
         try {
 
-            $item = Item::findOrFail($itemId);
+            $item = Item::with([
+                'development',
+                'design',
+                'marketing',
+                'photography',
+                'vfx'
+            ])->findOrFail($itemId);
 
             // تحديث جدول items
             $item->update($request->only([
@@ -268,12 +274,19 @@ class ItemController extends Controller
                 case 'مؤثرات بصرية':
 
                     if ($item->vfx) {
-
                         $item->vfx->update($request->only([
                             'overview',
                             'result',
                             'galleryVfx',
                         ]));
+                    } else {
+                        // Create vfx relationship if it doesn't exist
+                        VfxItem::create([
+                            'itemId' => $item->id,
+                            'overview' => $request->overview ?? '',
+                            'result' => $request->result ?? '',
+                            'galleryVfx' => $request->galleryVfx ?? [],
+                        ]);
                     }
 
                     break;

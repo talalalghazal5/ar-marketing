@@ -54,24 +54,23 @@ class UpdateItemRequest extends FormRequest
             'technologies.*' => 'string|max:255',
 
             'features' => 'sometimes|array',
-            'features.*' => 'string|max:255',
+            'features.*' => 'string|max:2048',
 
             // Design
             'brandOverview' => 'sometimes|string',
 
             'galleryDesign' => 'sometimes|array',
-            'galleryDesign.*' => 'string|max:255',
+            'galleryDesign.*' => 'string|max:2048',
 
             'brand_goals' => 'sometimes|array',
             'brand_goals.*' => 'string|max:255',
             //photography
              'galleryPhotography' => 'sometimes|array',
-            'galleryPhotography.*' => 'string|max:255',
+            'galleryPhotography.*' => 'string|max:2048',
 
             // VFX
             'overview' => 'sometimes|string',
-
-
+            'result' => 'sometimes|string',
 
             'galleryVfx' => 'sometimes|array',
             'galleryVfx.*' => 'string|max:255',

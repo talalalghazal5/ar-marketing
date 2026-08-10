@@ -93,11 +93,11 @@ class StoreItemRequest extends FormRequest
                 'string'
             ],
 
-            // 'result' => [
-            //     Rule::requiredIf($this->type == 'vfx'),
-            //     'nullable',
-            //     'string'
-            // ],
+            'result' => [
+                Rule::requiredIf($this->type == 'مؤثرات بصرية'),
+                'nullable',
+                'string'
+            ],
             'technologies' => [
                 Rule::requiredIf($this->type == 'برمجة وتطوير'),
                 'array',
@@ -115,7 +115,7 @@ class StoreItemRequest extends FormRequest
 
             'galleryDesign.*' => [
                 'string',
-                'max:255',
+                'max:2048',
             ],
              'galleryVfx' => [
                 Rule::requiredIf($this->type == 'مؤثرات بصرية'),
@@ -124,7 +124,7 @@ class StoreItemRequest extends FormRequest
             ],
 
             'galleryVfx.*' => [
-                'string',
+                'array',
                 'max:255',
             ],
              'galleryPhotography' => [
@@ -134,7 +134,7 @@ class StoreItemRequest extends FormRequest
             ],
 
             'galleryPhotography.*' => [
-                'string',
+                'array',
                 'max:255',
             ],
               'brand_goals' => [
