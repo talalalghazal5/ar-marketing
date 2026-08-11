@@ -1,72 +1,49 @@
-# Stage 1: Build dependencies and application
-FROM php:8.2-fpm AS builder
+FROM php:8.2-apache
 
-# Install system dependencies
 RUN apt-get update && apt-get install -y \
     git \
     curl \
+    unzip \
+    zip \
     libpng-dev \
     libonig-dev \
     libxml2-dev \
     libzip-dev \
+    libpq-dev \
+    && docker-php-ext-install \
+    pdo_pgsql \
+    mbstring \
+    exif \
+    pcntl \
+    bcmath \
+    gd \
     zip \
-    unzip \
-    npm \
-    nodejs \
-    && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd zip \
-    && pecl install redis \
-    && docker-php-ext-enable redis
+    && rm -rf /var/lib/apt/lists/*
 
-# Install Composer
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+RUN a2enmod rewrite
+ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
+RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' \
+    /etc/apache2/sites-available/*.conf \
+    /etc/apache2/apache2.conf \
+    /etc/apache2/conf-available/*.conf
 
-# Set working directory
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
 WORKDIR /var/www/html
-
-# Copy composer files and install PHP dependencies
-COPY composer.json composer.lock ./
-RUN composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev
-
-# Copy Node.js configuration and install Node.js dependencies
-COPY package.json vite.config.js ./
-RUN npm ci
-
-# Copy application code
 COPY . .
 
-# Build frontend assets
-RUN npm run build
+RUN composer install \
+    --no-dev \
+    --no-interaction \
+    --prefer-dist \
+    --optimize-autoloader \
+    --no-scripts
 
-# Stage 2: Production image
-FROM php:8.2-fpm
-
-# Install system dependencies
-RUN apt-get update && apt-get install -y \
-    git \
-    curl \
-    libpng-dev \
-    libonig-dev \
-    libxml2-dev \
-    libzip-dev \
-    zip \
-    unzip \
-    && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd zip \
-    && pecl install redis \
-    && docker-php-ext-enable redis
-
-# Install Composer
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
-
-# Set working directory
-WORKDIR /var/www/html
-
-# Copy built application from builder stage
-COPY --from=builder /var/www/html/ .
-
-# Ensure storage and bootstrap/cache directories are writable
-RUN chmod -R 775 storage bootstrap/cache \
-    && chown -R www-data:www-data storage bootstrap/cache
-
-# Expose port 9000 and start PHP-FPM server
-EXPOSE 9000
-CMD ["php-fpm"]
+RUN chown -R www-data:www-data \
+    storage \
+    bootstrap/cache \
+    && chmod -R 775 \
+    storage \
+    bootstrap/cache
+EXPOSE 80
+CMD [ "apache2-foreground" ] 
