@@ -64,18 +64,6 @@ export default function Header() {
           <HugeiconsIcon strokeWidth={2} icon={ArrowUpLeft}></HugeiconsIcon>
         </Link>
       </nav>
-      <div className="flex items-center gap-2">
-        <Button size={"lg"} className="font-thmanyah-subheading-sans">
-          إنشاء حساب
-        </Button>
-        <Button
-          variant={"secondary"}
-          size={"lg"}
-          className="border border-primary/60 bg-accent font-thmanyah-subheading-sans hover:bg-accent/80"
-        >
-          تسجيل الدخول
-        </Button>
-      </div>
     </header>
   )
 }
