@@ -14,6 +14,7 @@ import Header from "@/components/header"
 import { LenisProvider } from "@/components/providers/lenis-provider"
 import Footer from "@/components/footer"
 import ScrollToTopButton from "@/components/scroll-to-top-button"
+import {Toaster} from "@workspace/ui/components/sonner"
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" })
 
@@ -43,12 +44,13 @@ export default function RootLayout({
         adobe.variable
       )}
     >
-      <body className="bg-transparent!">
+      <body className="bg-transparent!" suppressHydrationWarning>
         <LenisProvider>
           <ThemeProvider>
-            <DirectionProvider direction="ltr">
+            <DirectionProvider direction="rtl">
               <Header />
               {children}
+              <Toaster />
               <Footer />
               <ScrollToTopButton />
             </DirectionProvider>

@@ -30,7 +30,7 @@ import {
   WhatsappFreeIcons,
   WhatsappIcon,
 } from "@hugeicons/core-free-icons"
-import { sendContactEmail } from "@/actions/send-email"
+import { sendContactEmail } from "@/app/actions/send-email"
 
 export default function ContactForm() {
   const countries = [

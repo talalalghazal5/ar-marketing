@@ -12,12 +12,14 @@ return new class extends Migration {
     {
         Schema::create('design_items', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('item_id')
+            $table->foreignId('itemId')
                 ->unique()
-                ->constrained()
+                ->constrained('items')
                 ->cascadeOnDelete();
+            $table->json('galleryDesign')->nullable();
+            $table->json('brand_goals')->nullable();
 
-            $table->longText('brand_overview');
+            $table->longText('brandOverview');
             $table->timestamps();
         });
     }

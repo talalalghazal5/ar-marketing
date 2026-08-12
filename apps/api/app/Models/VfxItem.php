@@ -7,9 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class VfxItem extends Model
 {
       protected $fillable = [
-        'item_id',
+        'itemId',
         'overview',
         'result',
+        'galleryVfx',
+    ];
+    protected $casts = [
+        'galleryVfx' => 'array',
     ];
 
     public function item()

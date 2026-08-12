@@ -7,7 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class PhotographyItem extends Model
 {
     protected $fillable = [
-        'item_id',
+        'itemId',
+        'galleryPhotography',
+    ];
+    protected $casts = [
+        'galleryPhotography' => 'array',
     ];
     protected $table = 'photography_items';
 

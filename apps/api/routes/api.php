@@ -9,3 +9,9 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::apiResource('items', ItemController::class);
+Route::get('searchByType/{type}',[ItemController::class,'searchByType']);
+Route::get('searchByTitle/{title}',[ItemController::class,'searchByTitle']);
+Route::get('searchBySlug/{slug}',[ItemController::class,'searchBySlug']);
+Route::get('filtering/{type}',[ItemController::class,'filtering']);
+
+

@@ -12,12 +12,15 @@ return new class extends Migration {
     {
         Schema::create('development_items', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('item_id')
+            $table->foreignId('itemId')
                 ->unique()
-                ->constrained()
+                ->constrained('items')
                 ->cascadeOnDelete();
 
-            $table->string('url')->nullable();
+            $table->string('url');
+            $table->json('technologies');
+            $table->json('features')->nullable();
+
             $table->timestamps();
         });
     }

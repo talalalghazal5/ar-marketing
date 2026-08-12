@@ -7,7 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class MarketingItem extends Model
 {
        protected $fillable = [
-        'item_id',
+        'itemId',
+        'platforms',
+        'results',
+    ];
+    protected $casts = [
+        'platforms' => 'array',
+        'results' => 'array',
     ];
 
     public function item()
@@ -15,16 +21,16 @@ class MarketingItem extends Model
         return $this->belongsTo(Item::class);
     }
 
-    public function results()
-    {
-        return $this->hasMany(Result::class);
-    }
+    // public function results()
+    // {
+    //     return $this->hasMany(Result::class,'marketingItemId');
+    // }
 
-    public function platforms()
-    {
-        return $this->belongsToMany(
-            Platform::class,
-            'marketing_platform'
-        );
-    }
+    // public function platforms()
+    // {
+    //     return $this->belongsToMany(
+    //         Platform::class,
+    //         'marketing_platform','marketingItemId', 'platformId'
+    //     );
+    // }
 }

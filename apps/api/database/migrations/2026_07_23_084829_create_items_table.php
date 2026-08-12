@@ -16,19 +16,20 @@ return new class extends Migration {
             $table->string('slug')->unique();
             $table->longText('description');
 
-            $table->enum('type', [
-                'development',
-                'design',
-                'marketing',
-                'photography',
-                'vfx'
+            $table->enum('itemCategory', [
+                'برمجة وتطوير',
+                'تصميم',
+                'تسويق',
+                'تصوير',
+                'مؤثرات بصرية'
             ]);
+             $table->text('image')->nullable();
 
             $table->boolean('featured')->default(false);
 
             $table->boolean('status')->default(true);
 
-            $table->integer('time_took')->nullable();
+            $table->integer('timeTook')->nullable();
 
             $table->timestamps();
         });

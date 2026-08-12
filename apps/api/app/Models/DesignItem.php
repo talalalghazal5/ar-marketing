@@ -6,11 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class DesignItem extends Model
 {
-     protected $fillable = [
-        'item_id',
-        'brand_overview',
+    protected $fillable = [
+        'itemId',
+        'brandOverview',
+        'galleryDesign',
+        'brand_goals',
     ];
 
+    protected $casts = [
+        'galleryDesign' => 'array',
+        'brand_goals'=>'array',
+    ];
     public function item()
     {
         return $this->belongsTo(Item::class);
@@ -18,6 +24,6 @@ class DesignItem extends Model
 
     public function brandGoals()
     {
-        return $this->hasMany(BrandGoal::class);
+        return $this->hasMany(BrandGoal::class,'designItemId');
     }
 }
