@@ -20,7 +20,7 @@ export default function Timeline({
                   <p className="text-lg font-semibold font-thmanyah-subheading-sans ">{index + 1}</p>
               </Milestone>
               {index !== processData.length - 1 && (
-                  <div className={"h-10 w-px bg-muted-foreground"}></div>
+                  <div className="h-10 w-px bg-muted-foreground"></div>
               )}
           </div>
       ))}

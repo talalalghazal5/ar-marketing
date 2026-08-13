@@ -18,9 +18,9 @@ export default function ProcessSection() {
     <div  ref={sectionRef}>
       <SectionTemplate>
         <SectionHeading title="رحلة مشروعك معنا" align="start"/>
-        <div className="grid grid-cols-[150px_1fr]">
+        <div className="grid md:gap-6 md:grid-cols-[150px_1fr]">
           {/* Timeline */}
-          <div className="">
+          <div className="not-md:hidden">
             <Timeline
               activeStep={activeStep}
               scrollYProgress={scrollYProgress}
@@ -31,7 +31,7 @@ export default function ProcessSection() {
             {processData.map((process) => (
               <div key={process.id} className="h-100">
                 <ProcessCard
-                
+
                 process={process}
                 onActive={setActiveStep}
               />

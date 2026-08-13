@@ -90,11 +90,11 @@ export default function ContactForm() {
   const businessesValues = businesses.map((business) => business.value)
 
   const contactSchema = z.object({
-    fullName: z.string().min(1, "Name is required"),
-    email: z.email("Invalid email"),
-    country: z.enum(countriesValues, { error: "Country is required" }),
-    business: z.enum(businessesValues, { error: "Business is required" }),
-    message: z.string().min(1, "Message is required"),
+    fullName: z.string().min(1, "الاسم مطلوب"),
+    email: z.email("البريد الإلكتروني غير صالح"),
+    country: z.enum(countriesValues, { error: "البلد مطلوب" }),
+    business: z.enum(businessesValues, { error: "نوع المشروع مطلوب" }),
+    message: z.string().min(1, "الرسالة مطلوبة"),
   })
   const form = useForm<z.infer<typeof contactSchema>>({
     resolver: zodResolver(contactSchema),
@@ -115,7 +115,7 @@ export default function ContactForm() {
     البريد الإلكتروني: ${data.email}
     البلد: ${countries.find((c) => c.value === data.country)?.name ?? data.country}
     نوع العمل: ${businesses.find((b) => b.value === data.business)?.name ?? data.business}
-    الرسالة: ${data.message}
+    المطلوب: ${data.message}
     `
     const encodedUrl = encodeURIComponent(whatsappMessage)
     const whatsappUrl = `https://wa.me/963935299727?text=${encodedUrl}`

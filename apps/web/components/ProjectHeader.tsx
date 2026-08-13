@@ -47,9 +47,9 @@ export default function ProjectHeader({ item }: ProjectHeaderProps) {
   }
 
   return (
-    <div className="relative w-full flex flex-col items-center">
+    <div className="relative w-full flex flex-col items-center not-md:px-5">
       {/* Hero Image Section */}
-      <div className="relative w-full aspect-[21/9] sm:aspect-[2.5/1] overflow-hidden rounded-3xl border border-border/40 shadow-2xl mt-8">
+      <div className="relative w-full aspect-21/9 sm:aspect-2.5/1 overflow-hidden rounded-3xl border border-border/40 shadow-2xl mt-8">
         <Image
           src={item.image}
           alt={item.title}
@@ -62,7 +62,7 @@ export default function ProjectHeader({ item }: ProjectHeaderProps) {
       </div>
 
       {/* Content Section (Pulled up slightly over the image) */}
-      <div className="relative z-10 -mt-20 sm:-mt-32 w-full max-w-4xl flex flex-col gap-6 text-center items-center bg-card/60 backdrop-blur-2xl border border-border/50 rounded-3xl p-8 sm:p-12 shadow-xl">
+      <div className="relative z-10 not-md:-mt-5 -mt-32 w-full max-w-4xl flex flex-col gap-6 text-center items-center bg-card/60 backdrop-blur-2xl border border-border/50 rounded-3xl p-8 sm:p-12 shadow-xl">
         {/* Featured Badge & Category */}
         <div className="flex flex-wrap items-center justify-center gap-3">
           {item.featured && (

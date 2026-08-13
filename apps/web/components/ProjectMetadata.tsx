@@ -39,7 +39,7 @@ export default function ProjectMetadata({ item, timeTook }: ProjectMetadataProps
   }
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-4xl mx-auto py-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-4xl mx-auto py-8 not-lg:px-5">
       {/* Status Card */}
       <div className="flex flex-col items-center sm:items-start p-6 rounded-2xl bg-card/40 border border-border/50 backdrop-blur-xl shadow-xs transition-colors hover:bg-card/60">
         <span className="flex items-center gap-2 text-sm tracking-wider text-muted-foreground mb-2 font-thmanyah-subheading-sans">

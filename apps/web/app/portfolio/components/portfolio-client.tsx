@@ -82,8 +82,8 @@ export default function PortfolioClient() {
 
   if (loading) {
     return (
-      <div className="grid gap-6 md:grid-cols-[260px_minmax(0,1fr)]">
-        <div className="sticky top-30 z-10 flex max-h-100 flex-col rounded-2xl border border-border/60 bg-card/70 p-6 shadow-xl shadow-black/10 backdrop-blur-xl *:font-thmanyah-subheading-sans">
+      <div className="grid w-full! gap-6 md:grid-cols-[250px_minmax(0,1fr)]">
+        <div className="not-md:w-full sticky top-30 z-10 flex max-h-100 flex-col rounded-2xl border border-border/60 bg-card/70 p-6 shadow-xl shadow-black/10 backdrop-blur-xl *:font-thmanyah-subheading-sans">
           <div className="mb-6 gap-4">
             <Skeleton className="h-5 w-10 rounded-lg mb-5" />
             <Skeleton className="h-10 w-full" />
@@ -121,7 +121,7 @@ export default function PortfolioClient() {
     )
   }
   return (
-    <div className="grid gap-6 md:grid-cols-[260px_minmax(0,1fr)]">
+    <div className="grid gap-6 md:grid-cols-[260px_minmax(0,1fr)] w-full">
       <div className="sticky top-30 z-10 flex max-h-100 flex-col rounded-2xl border border-border/60 bg-card/70 p-6 shadow-xl shadow-black/10 backdrop-blur-xl *:font-thmanyah-subheading-sans">
         <div className="mb-6">
           <p className="mb-3 text-sm font-semibold tracking-[0.2em] text-muted-foreground uppercase">
