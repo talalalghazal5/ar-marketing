@@ -46,7 +46,7 @@ export default function Header() {
       >
         <span className="text-primary">AR</span> Marketing
       </a>
-      <nav className="flex items-center gap-10 not-md:hidden md:block">
+      <nav className="flex items-center gap-10 not-md:hidden">
         {navLinks.map(({ label, href }) => (
           <a
             key={href}
@@ -54,13 +54,16 @@ export default function Header() {
             onClick={(e) => handleNavClick(e, href)}
             className={cn(
               "cursor-pointer font-thmanyah-subheading-sans text-foreground!",
-              buttonVariants({ variant: "link" })
+              buttonVariants({ variant: "link"})
             )}
           >
             {label}
           </a>
         ))}
-        <Link
+
+        {/* //* COMMENTED OUT UNTIL THE STORE IS BUILT}
+
+        {/* <Link
           href={"/"}
           className={cn(
             "font-thmanyah-subheading-sans text-foreground!",
@@ -68,12 +71,12 @@ export default function Header() {
           )}
           onClick={(e) => {
             e.preventDefault()
-            scrollTo("/")
+            scrollTo(0)
           }}
         >
           متجرنا
           <HugeiconsIcon strokeWidth={2} icon={ArrowUpLeft}></HugeiconsIcon>
-        </Link>
+        </Link> */}
       </nav>
       <Sheet modal open={open} onOpenChange={(open) => setOpen(open)}>
         <SheetTrigger

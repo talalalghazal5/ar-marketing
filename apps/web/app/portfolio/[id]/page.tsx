@@ -226,10 +226,10 @@ async function ProjectContent({ params }: { params: { id: string } }) {
         </SectionTemplate>
         <SectionDivider />
         <SectionTemplate>
-          <div className="mx-auto space-y-16 px-6">
+          <div className="mx-auto space-y-16 px-5 not-md:text-center">
             {designItem.gallery && designItem.gallery.length > 0 ? (
               <div>
-                <h3 className="mb-4 font-thmanyah-heading text-2xl text-foreground">
+                <h3 className="mb-4 font-thmanyah-heading text-2xl text-foreground not-md:mb-10">
                   الهوية البصرية للعلامة التجارية
                 </h3>
                 <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

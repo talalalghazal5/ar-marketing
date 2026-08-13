@@ -40,16 +40,15 @@ function FooterLink({ href, label, icon }: FooterLinkProps) {
 
 export default function Footer() {
   const quickLinks = [
-    { label: "الرئيسية", href: "#" },
-    { label: "خدماتنا", href: "#" },
-    { label: "أعمالنا", href: "#" },
-    { label: "FAQ", href: "#" },
-    { label: "تواصل معنا", href: "#" },
-    { label: "متجرنا", href: "#", icon: <HugeiconsIcon icon={ArrowUpLeft} /> },
+    { label: "الرئيسية", href: "/" },
+    { label: "خدماتنا", href: "/#services" },
+    { label: "أعمالنا", href: "/portfolio" },
+    { label: "FAQ", href: "/#faq" },
+    { label: "تواصل معنا", href: "/#contact" },
   ]
 
   return (
-    <footer className="flex w-full flex-col justify-center gap-5 border-t border-accent bg-background p-6 backdrop-blur-3xl mt-0 sm:p-10">
+    <footer className="mt-0 flex w-full flex-col justify-center gap-5 border-t border-accent bg-background p-6 backdrop-blur-3xl sm:p-10">
       <div className="flex flex-col items-center gap-4">
         <h1 className="text-center font-thmanyah-subheading-sans text-4xl font-bold sm:text-6xl md:text-8xl lg:text-9xl">
           <span className="text-primary">AR</span> MARKETING
@@ -59,28 +58,27 @@ export default function Footer() {
         </h3>
       </div>
       <div className="mt-10 flex flex-col justify-between gap-10 font-thmanyah-subheading-sans text-muted-foreground sm:mt-15 md:flex-row">
-        <div className="flex w-full max-w-lg flex-col gap-4">
+        <div className="flex w-full max-w-lg flex-col gap-4 not-sm:items-center">
           <h4 className="font-thmanyah-subheading-sans text-xl font-semibold text-primary">
             روابط سريعة
           </h4>
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+          <div className="grid grid-cols-2 gap-3 not-sm:w-full not-sm:place-items-center sm:grid-cols-3">
             {quickLinks.map((link) => (
               <FooterLink
                 key={link.label}
                 href={link.href}
                 label={link.label}
-                icon={link.icon}
               />
             ))}
           </div>
         </div>
-        <div className="flex w-full max-w-lg flex-col gap-4">
+        <div className="flex w-full max-w-lg flex-col gap-4 not-sm:items-center">
           <h4 className="font-thmanyah-subheading-sans text-xl font-semibold text-primary">
             تابعنا
           </h4>
           <div className="flex gap-4">
             <Link
-              href={"/"}
+              href={"https://www.facebook.com/share/1Bwp2sSfEu/"}
               className={buttonVariants({
                 variant: "link",
                 className: "w-fit px-0! text-muted-foreground!",
@@ -89,7 +87,7 @@ export default function Footer() {
               <FontAwesomeIcon className="size-7" icon={faFacebook} />
             </Link>
             <Link
-              href={"/"}
+              href={"https://www.instagram.com/ar_comprehensive_marketing?igsh=MW5yankxYzNiaHk0Mg=="}
               className={buttonVariants({
                 variant: "link",
                 className: "w-fit px-0! text-muted-foreground!",
@@ -98,7 +96,9 @@ export default function Footer() {
               <FontAwesomeIcon className="size-7" icon={faInstagram} />
             </Link>
             <Link
-              href={"/"}
+              href={
+                "https://www.linkedin.com/in/ar-comprehensive-markting-0674a3348%3Futm_source%3Dshare%26utm_campaign%3Dshare_via%26utm_content%3Dprofile%26utm_medium%3Dandroid_app?fbclid=IwdGRjcATq089jbGNrBOrTy3Bkb2YFZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMzUwNjg1NTMxNzI4AAEeqja5q3W1epv0TOWtFmK4mTsQAOq4g9_2aqk-RPhbAl6_lP5RymzT4mpe5l4_aem_zWoJZe8KY2S2jPOwQLfwOg"
+              }
               className={buttonVariants({
                 variant: "link",
                 className: "w-fit px-0! text-muted-foreground!",
@@ -107,7 +107,7 @@ export default function Footer() {
               <FontAwesomeIcon className="size-7" icon={faLinkedin} />
             </Link>
             <Link
-              href={"/"}
+              href={"https://www.pinterest.com/https%3A%2F%2Fpin.it%2F40mYYvQC9?fbclid=IwdGRjcATq0-xjbGNrBOrT6XBkb2YFZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMzUwNjg1NTMxNzI4AAEer1w3WtSTQBxV3fcwEO2tkQngN2Zo0CVij4hKxSIot0W943PCqBQBv6Aubxc_aem_kRN1RK8LuhWUy3iZtWXhiQ"}
               className={buttonVariants({
                 variant: "link",
                 className: "w-fit px-0! text-muted-foreground!",

@@ -23,11 +23,11 @@ export default function PortfolioSection() {
   }, [])
 
   return (
-    <SectionTemplate id="portfolio">
+    <SectionTemplate id="portfolio" className="mt-20">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{  margin: "-80px" }}
+        viewport={{ margin: "-80px" }}
         transition={{ duration: 0.6, ease: "easeOut" }}
       >
         <SectionHeading
@@ -38,19 +38,17 @@ export default function PortfolioSection() {
         />
       </motion.div>
       <motion.div
-        className="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-2"
+        className="mt-12 grid w-full grid-cols-1 gap-6 lg:grid-cols-2"
         initial={{ opacity: 0, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{  margin: "-60px" }}
+        viewport={{ margin: "-60px" }}
         transition={{ duration: 0.6, ease: "easeOut", delay: 0.15 }}
       >
         {items.length > 0 ? (
-          items.map((item) => (
-            <PortfolioItemCard key={item.id} item={item} />
-          ))
+          items.map((item) => <PortfolioItemCard key={item.id} item={item} />)
         ) : (
-          <div className="col-span-1 lg:col-span-2 flex min-h-60 items-center justify-center rounded-2xl border border-dashed border-border/60 bg-card/40 p-8 text-center text-muted-foreground">
-            لا توجد أعمال لعرضها أو جاري جلب البيانات...
+          <div className="col-span-1 flex min-h-60 items-center justify-center rounded-2xl border border-dashed border-border/60 bg-card/40 p-8 text-center text-muted-foreground lg:col-span-2">
+            جاري جلب البيانات...
           </div>
         )}
       </motion.div>
