@@ -23,7 +23,7 @@ export default function PortfolioSection() {
   }, [])
 
   return (
-    <SectionTemplate id="portfolio" className="mt-20">
+    <SectionTemplate id="portfolio" className="mt-20 w-full">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -33,8 +33,7 @@ export default function PortfolioSection() {
         <SectionHeading
           title="أعمالنا"
           subtitle="ألقِ نظرة على بعضٍ من أعمالنا المميزة"
-          className="gap-3"
-          align="start"
+          className="gap-3 text-center lg:text-start"
         />
       </motion.div>
       <motion.div

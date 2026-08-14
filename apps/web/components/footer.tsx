@@ -45,6 +45,7 @@ export default function Footer() {
     { label: "أعمالنا", href: "/portfolio" },
     { label: "FAQ", href: "/#faq" },
     { label: "تواصل معنا", href: "/#contact" },
+    {label: "الشروط والأحكام", href: "/terms"}
   ]
 
   return (

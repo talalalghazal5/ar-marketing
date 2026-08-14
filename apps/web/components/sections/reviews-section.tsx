@@ -50,7 +50,7 @@ export default function ReviewsSection() {
         <SectionHeading
           title="الآراء والتقييمات"
           subtitle="شاهد ماذا يقول الناس عنا"
-          className="gap-3 text-start space-y-5"
+          className="gap-3 text-start space-y-5 not-md:text-center"
         />
       </motion.div>
       <motion.div

@@ -19,7 +19,7 @@ export default function ContactSection() {
         <SectionHeading
           title="حان الوقت لتصنع حضورك الرقمي !"
           subtitle="ابدأ اليوم، ودعنا نبني معًا علامة تجارية تستحق أن تُرى"
-          className="gap-8"
+          className="gap-8 not-md:text-center"
         />
       </motion.div>
       <motion.div

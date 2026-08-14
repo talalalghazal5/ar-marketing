@@ -15,14 +15,14 @@ const stats = [
 
 export default function WhyUsSection() {
   return (
-    <SectionTemplate>
+    <SectionTemplate className="w-full">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{  margin: "-80px" }}
         transition={{ duration: 0.6, ease: "easeOut" }}
       >
-        <SectionHeading title="أرقام تعكس ثقة العملاء" align="start" />
+        <SectionHeading title="أرقام تعكس ثقة العملاء" className="not-md:text-center w-full"/>
       </motion.div>
       <div className="flex w-full flex-col items-center justify-evenly gap-7 md:flex-row md:items-center md:justify-evenly">
         {stats.map((stat, index) => (

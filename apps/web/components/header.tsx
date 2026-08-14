@@ -36,16 +36,15 @@ export default function Header() {
 
   return (
     <header className="fixed z-99 flex w-full items-center justify-between border-b border-accent bg-background/60 p-5 backdrop-blur-3xl">
-      <a
-        href="#"
-        onClick={(e) => {
-          e.preventDefault()
+      <Link
+        href="/"
+        onClick={() => {
           scrollTo(0)
         }}
         className="cursor-pointer font-thmanyah-heading text-2xl font-bold text-foreground"
       >
         <span className="text-primary">AR</span> Marketing
-      </a>
+      </Link>
       <nav className="flex items-center gap-10 not-md:hidden">
         {navLinks.map(({ label, href }) => (
           <a
