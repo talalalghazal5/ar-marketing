@@ -244,7 +244,7 @@ export default function Page() {
             </p>
           </section>
           <Separator />
-          <section className="flex flex-col gap-10" id="deadlines">
+          <section className="flex flex-col gap-10 w-full" id="deadlines">
             <h2 className="font-thmanyah-heading text-4xl">
               المواعيد والتسليم
             </h2>
@@ -267,7 +267,7 @@ export default function Page() {
             </p>
           </section>
           <Separator />
-          <section className="flex flex-col gap-10" id="client-responsibilites">
+          <section className="flex flex-col gap-10 w-full" id="client-responsibilites">
             <h2 className="font-thmanyah-heading text-4xl">مسؤوليات العميل</h2>
             <p className="font-thmanyah-subheading-sans">يلتزم العميل بـ:</p>
             <ul className="mx-5 space-y-3 font-thmanyah-subheading-sans">
@@ -306,7 +306,7 @@ export default function Page() {
           </section>
           <Separator />
           <section
-            className="flex flex-col gap-10"
+            className="flex flex-col gap-10 w-full"
             id="cancellation-and-redemption"
           >
             <h2 className="font-thmanyah-heading text-4xl">
@@ -326,7 +326,7 @@ export default function Page() {
             </p>
           </section>
           <Separator />
-          <section className="flex flex-col gap-10" id="paid-promotions">
+          <section className="flex flex-col gap-10 w-full" id="paid-promotions">
             <h2 className="font-thmanyah-heading text-4xl">
               الإعلانات الممولة
             </h2>
@@ -352,7 +352,7 @@ export default function Page() {
           </section>
           <Separator />
           <section
-            className="flex flex-col gap-10"
+            className="flex flex-col gap-10 w-full"
             id="privacy-and-data-protection"
           >
             <h2 className="font-thmanyah-heading text-4xl">
@@ -372,7 +372,7 @@ export default function Page() {
             </p>
           </section>
           <Separator />
-          <section className="flex flex-col gap-10" id="disclaimer">
+          <section className="flex flex-col gap-10 w-full" id="disclaimer">
             <h2 className="font-thmanyah-heading text-4xl">إخلاء المسؤولية</h2>
             <p className="font-thmanyah-subheading-sans">
               الشركة غير مسؤولة عن:

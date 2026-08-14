@@ -100,7 +100,7 @@ export default function FaqSection() {
           viewport={{  margin: "-80px" }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <SectionHeading title="الأسئلة المتكررة" className="text-nowrap" />
+          <SectionHeading title="الأسئلة المتكررة" className="text-nowrap not-md:text-center" />
         </motion.div>
         <motion.div
           initial={{ opacity: 0, y: 24 }}

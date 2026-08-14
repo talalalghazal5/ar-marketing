@@ -64,7 +64,7 @@ export default function ServicesSection() {
           title="حلول متكاملة لنمو أعمالك"
           subtitle="نقدم إليك أفضل الحلول التسويقية لكي تتميز في مشروعك"
           align="start"
-          className="mt-45"
+          className="mt-45 not-md:text-center"
         />
       </motion.div>
       <div className="grid w-full grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">

@@ -17,13 +17,10 @@ export default function SectionHeading({
     <div
       className={cn(
         "flex flex-col gap-4",
-        align === "center"
-          ? "items-center text-center"
-          : "items-start text-start not-md:items-center not-md:text-center",
         className
       )}
     >
-      <h1 className="font-thmanyah-heading text-5xl not-lg:text-center w-full">{title}</h1>
+      <h1 className="font-thmanyah-heading text-5xl w-full">{title}</h1>
       {subtitle && (
         <p className="w-full font-thmanyah-serif text-lg leading-loose text-muted-foreground">
           {subtitle}

@@ -13,7 +13,7 @@ export default function WhoAreWeSection() {
             شريكك في بناء علامتك التجارية
           </TextAnimate>
           <motion.p
-            className="font-thmanyah-subheading-sans leading-10 text-muted-foreground not-lg:text-center"
+            className="font-thmanyah-subheading-sans leading-10 text-muted-foreground not-md:text-center"
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{  margin: "-80px" }}
