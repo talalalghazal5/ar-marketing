@@ -25,6 +25,10 @@ const fontMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.ar-growth.com"),
+  alternates: {
+    canonical: "/",
+  },
   title: "AR Marketing | شركة تسويق رقمي متكامل",
   description:
     "AR Marketing شركة متخصصة في التسويق الرقمي، إدارة حسابات التواصل الاجتماعي، تصميم الهوية البصرية، صناعة المحتوى، الإعلانات الممولة وتطوير المواقع والمتاجر الإلكترونية.",
