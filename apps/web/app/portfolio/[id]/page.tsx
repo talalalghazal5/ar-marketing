@@ -225,25 +225,25 @@ async function ProjectContent({ params }: { params: { id: string } }) {
           </div>
         </SectionTemplate>
         <SectionDivider />
-        <SectionTemplate>
-          <div className="mx-auto space-y-16 px-5 not-md:text-center">
+        <SectionTemplate className="itmes-center flex flex-col px-10">
+          <h3 className="mb-4 font-thmanyah-heading text-2xl text-foreground not-md:mb-10">
+            الهوية البصرية للعلامة التجارية
+          </h3>
+          <div className="w-full px-5 not-md:text-center">
             {designItem.gallery && designItem.gallery.length > 0 ? (
               <div>
-                <h3 className="mb-4 font-thmanyah-heading text-2xl text-foreground not-md:mb-10">
-                  الهوية البصرية للعلامة التجارية
-                </h3>
-                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                <div className="grid w-full! gap-4 sm:grid-cols-2 lg:grid-cols-3">
                   {designItem.gallery.map((imgUrl, idx) => (
                     <div
                       key={idx}
-                      className="relative aspect-square w-100 overflow-hidden rounded-xl"
+                      className="relative aspect-square w-full overflow-hidden rounded-xl"
                     >
                       <Image
                         src={imgUrl}
                         alt={`Project gallery image ${idx + 1}`}
                         fill
                         className="object-cover"
-                        
+
                         loading="lazy"
                       />
                       <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent"></div>
