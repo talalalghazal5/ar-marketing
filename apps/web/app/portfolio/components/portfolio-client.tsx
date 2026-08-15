@@ -288,7 +288,7 @@ export default function PortfolioClient() {
         </div>
       </div>
       {items.length > 0 ? (
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 align-self-stretch">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 self-stretch">
           {items.map((item) => (
             <PortfolioItemCard key={item.id} item={item} />
           ))}
