@@ -44,7 +44,7 @@ export default function ReviewCard({
           <CardTitle>
             <Image
               src={avatar}
-              alt=""
+              alt={`صورة ${name}`}
               width={45}
               height={45}
               className="rounded-full"
