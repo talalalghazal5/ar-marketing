@@ -4,9 +4,9 @@ import { HugeiconsIcon } from "@hugeicons/react"
 import { Button } from "@workspace/ui/components/button"
 import Image from "next/image"
 import SectionTemplate from "@/components/section-template"
-import SectionHeading from "@/components/section-heading"
 import { motion } from "motion/react"
 import { useLenis } from "../providers/lenis-provider"
+import HeroHeading from "../hero-heading"
 
 export default function HeroSection() {
   const { scrollTo } = useLenis()
@@ -19,8 +19,8 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
         >
-          <SectionHeading
-            title="علامة تجاريّة تليقُ بمشروعِك"
+          <HeroHeading
+            title="شركة تسويق رقمي متكامل لنمو أعمالك"
             subtitle="نساعدك على بناء هوية بصرية قوية تُعبّر عن علامتك التجارية وتميّزها في السوق."
             align="start"
             className="gap-5"
@@ -52,7 +52,6 @@ export default function HeroSection() {
               className="w-fit border border-primary/60 bg-accent font-thmanyah-subheading-sans hover:bg-accent/80"
               size="lg"
               onClick={() => scrollTo("#services")}
-
             >
               <HugeiconsIcon
                 icon={ArrowDown02Icon}
@@ -79,7 +78,7 @@ export default function HeroSection() {
           <Image
             src="/images/Marketing.jpg"
             fill
-            alt="Marketing"
+            alt="خدمات التسويق الرقمي في AR Marketing"
             className="rounded-lg object-cover"
           />
         </div>
