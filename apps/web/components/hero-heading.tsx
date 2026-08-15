@@ -1,18 +1,18 @@
 import { cn } from "@workspace/ui/lib/utils"
 
-interface SectionHeadingProps {
+interface HeroHeadingProps {
   title: string
   subtitle?: string
   align?: "center" | "start"
   className?: string
 }
 
-export default function SectionHeading({
+export default function HeroHeading({
   title,
   subtitle,
   align = "center",
   className,
-}: SectionHeadingProps) {
+}: HeroHeadingProps) {
   return (
     <div
       className={cn(
@@ -20,7 +20,7 @@ export default function SectionHeading({
         className
       )}
     >
-      <h2 className="font-thmanyah-heading text-5xl w-full">{title}</h2>
+      <h1 className="font-thmanyah-heading text-5xl w-full">{title}</h1>
       {subtitle && (
         <p className="w-full font-thmanyah-serif text-lg leading-loose text-muted-foreground">
           {subtitle}
