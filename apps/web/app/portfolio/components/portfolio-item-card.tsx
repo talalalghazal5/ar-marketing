@@ -88,7 +88,7 @@ const PortfolioCardShell = ({
   children,
   footer,
 }: PortfolioCardShellProps) => (
-  <Card className="group flex h-full flex-col overflow-hidden border border-border/60 bg-card/80 p-0 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-[0_20px_60px_-20px_rgba(0,0,0,0.55)]">
+  <Card className="group flex w-full!  h-full flex-col overflow-hidden border border-border/60 bg-card/80 p-0 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-[0_20px_60px_-20px_rgba(0,0,0,0.55)]">
     <div className="relative aspect-4/3 overflow-hidden border-b border-border/50 bg-muted/20">
       <Image
         src={image}

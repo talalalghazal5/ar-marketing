@@ -88,7 +88,7 @@ export default function PortfolioClient() {
 
   if (loading) {
     return (
-      <div className="grid w-full! gap-6 md:grid-cols-[250px_minmax(0,1fr)]">
+      <div className="grid w-full! gap-6 not-md:flex not-md:flex-col not-md:items-center not-md:overflow-x-auto md:grid-cols-[250px_minmax(0,1fr)]">
         <div className="sticky top-30 z-10 flex max-h-100 flex-col rounded-2xl border border-border/60 bg-card/70 p-6 shadow-xl shadow-black/10 backdrop-blur-xl *:font-thmanyah-subheading-sans">
           <div className="mb-6">
             <p className="mb-3 text-sm font-semibold tracking-[0.2em] text-muted-foreground uppercase">
@@ -201,7 +201,7 @@ export default function PortfolioClient() {
     )
   }
   return (
-    <div className="grid w-full gap-6 md:grid-cols-[260px_minmax(0,1fr)]">
+    <div className="grid w-full! gap-6 not-md:flex not-md:flex-col not-md:items-center md:grid-cols-[260px_minmax(0,1fr)]">
       <div className="sticky top-30 z-10 flex max-h-100 flex-col rounded-2xl border border-border/60 bg-card/70 p-6 shadow-xl shadow-black/10 backdrop-blur-xl *:font-thmanyah-subheading-sans">
         <div className="mb-6">
           <p className="mb-3 text-sm font-semibold tracking-[0.2em] text-muted-foreground uppercase">
@@ -288,13 +288,13 @@ export default function PortfolioClient() {
         </div>
       </div>
       {items.length > 0 ? (
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 self-stretch">
           {items.map((item) => (
             <PortfolioItemCard key={item.id} item={item} />
           ))}
         </div>
       ) : (
-        <div className="flex min-h-60 items-center justify-center rounded-2xl border border-dashed border-border/60 bg-card/40 p-8 text-center font-thmanyah-subheading-sans text-muted-foreground">
+        <div className="flex min-h-60 items-center justify-center rounded-2xl border border-dashed border-border/60 bg-card/40 p-8 text-center font-thmanyah-subheading-sans text-muted-foreground align-self-stretch">
           لا توجد أعمال لعرضها
         </div>
       )}
