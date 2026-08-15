@@ -20,7 +20,7 @@ export default function SectionHeading({
         className
       )}
     >
-      <h1 className="font-thmanyah-heading text-5xl w-full">{title}</h1>
+      <h2 className="font-thmanyah-heading text-5xl w-full">{title}</h2>
       {subtitle && (
         <p className="w-full font-thmanyah-serif text-lg leading-loose text-muted-foreground">
           {subtitle}
