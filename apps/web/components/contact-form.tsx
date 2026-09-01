@@ -118,7 +118,7 @@ export default function ContactForm() {
     المطلوب: ${data.message}
     `
     const encodedUrl = encodeURIComponent(whatsappMessage)
-    const whatsappUrl = `https://wa.me/963935299727?text=${encodedUrl}`
+    const whatsappUrl = `https://wa.me/963983728578?text=${encodedUrl}`
     window.open(whatsappUrl, "_blank")
   }
 
